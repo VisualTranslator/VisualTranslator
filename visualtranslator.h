@@ -3,13 +3,14 @@
 
 #include <QtWidgets>
 #include <QHotkey>
+#include <tray.h>
 
 class VisualTranslator : public QWidget
 {
     Q_OBJECT
 private:
-    QSystemTrayIcon *trayIcon;
     QHotkey *hotkey;
+    Tray *tray;
 protected:
 
 public:

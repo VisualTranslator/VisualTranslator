@@ -12,10 +12,12 @@ TARGET = VisualTranslator
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    visualtranslator.cpp
+    visualtranslator.cpp \
+    tray.cpp
 
 HEADERS  += \
-    visualtranslator.h
+    visualtranslator.h \
+    tray.h
 
 FORMS    +=
 include(qhotkey.pri)
