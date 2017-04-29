@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/lang_icons/ua.png</file>
+        <file>resources/tray.png</file>
+    </qresource>
+</RCC>

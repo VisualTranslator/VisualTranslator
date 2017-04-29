@@ -1,8 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>tray.png</file>
-    </qresource>
-    <qresource prefix="/lang-icons">
-        <file>ua.png</file>
-    </qresource>
-</RCC>

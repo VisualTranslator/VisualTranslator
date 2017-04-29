@@ -2,7 +2,7 @@
 
 Tray::Tray(QWidget *parent) : QWidget(parent)
 {
-    trayIcon = new QSystemTrayIcon(QIcon(":/tray.png"));
+    trayIcon = new QSystemTrayIcon(QIcon(":/resources/tray.png"));
     trayIcon->setToolTip(QString("Visual Translator"));
     trayIcon->show();
     generateMenu();
@@ -17,7 +17,7 @@ void Tray::generateMenu()
     menuLangToGroup = new QActionGroup(this);
 
     addLangMenuItem("from", "Autodetect", QVariant("auto"));
-    addLangMenuItem("to", "Ukrainian", QVariant("ua"), QIcon(":/lang-icons/ua.png"));
+    addLangMenuItem("to", "Ukrainian", QVariant("ua"), QIcon(":/resources/lang_icons/ua.png"));
 
     menu->addMenu(langFromMenu);
     menu->addMenu(langToMenu);
