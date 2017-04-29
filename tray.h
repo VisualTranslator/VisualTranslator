@@ -3,12 +3,19 @@
 
 #include <QtWidgets>
 
-class Tray
+class Tray : public QWidget
 {
+    Q_OBJECT
+private:
+    virtual void generateMenu();
 public:
-    Tray();
+    explicit Tray(QWidget *parent = 0);
     void showMessage();
     QSystemTrayIcon *trayIcon;
+    QMenu *menu;
+signals:
+
+public slots:
 };
 
 #endif // TRAY_H
