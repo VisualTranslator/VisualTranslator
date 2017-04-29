@@ -3,7 +3,7 @@
 
 VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 {
-   Tray *tray = new Tray;
+   tray = new Tray;
 
    hotkey = new QHotkey(QKeySequence("ctrl+alt+Q"), true, this);
    QObject::connect(hotkey, SIGNAL(activated()), this, SLOT(start()));
