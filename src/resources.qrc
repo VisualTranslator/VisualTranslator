@@ -2,5 +2,16 @@
     <qresource prefix="/">
         <file>resources/lang_icons/ua.png</file>
         <file>resources/tray.png</file>
+        <file>resources/lang_icons/sa.png</file>
+        <file>resources/lang_icons/us.png</file>
+        <file>resources/lang_icons/fr.png</file>
+        <file>resources/lang_icons/de.png</file>
+        <file>resources/lang_icons/es.png</file>
+        <file>resources/lang_icons/it.png</file>
+        <file>resources/lang_icons/jp.png</file>
+        <file>resources/lang_icons/kr.png</file>
+        <file>resources/lang_icons/pt.png</file>
+        <file>resources/lang_icons/ru.png</file>
+        <file>resources/lang_icons/auto.png</file>
     </qresource>
 </RCC>
