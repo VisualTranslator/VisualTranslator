@@ -1,5 +1,6 @@
 #include "visualtranslator.h"
 #include "tray.h"
+#include "screenarea.h"
 
 VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 {
@@ -11,5 +12,6 @@ VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 
 void VisualTranslator::start()
 {
-    //TODO : paint screenshot
+    ScreenArea *screenArea = new ScreenArea;
+    screenArea->showArea();
 }

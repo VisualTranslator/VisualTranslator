@@ -11,15 +11,18 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = VisualTranslator
 TEMPLATE = app
 
+
 SOURCES += main.cpp \
     visualtranslator.cpp \
     tray.cpp \
-    app.cpp
+    app.cpp \
+    screenarea.cpp
 
 HEADERS  += \
     visualtranslator.h \
     tray.h \
-    app.h
+    app.h \
+    screenarea.h
 
 FORMS    +=
 include(qhotkey.pri)
