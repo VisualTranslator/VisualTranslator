@@ -13,11 +13,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     visualtranslator.cpp \
-    tray.cpp
+    tray.cpp \
+    app.cpp
 
 HEADERS  += \
     visualtranslator.h \
-    tray.h
+    tray.h \
+    app.h
 
 FORMS    +=
 include(qhotkey.pri)

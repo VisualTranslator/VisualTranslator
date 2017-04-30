@@ -11,5 +11,5 @@ VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 
 void VisualTranslator::start()
 {
-    tray->showMessage();
+    //TODO : paint screenshot
 }
