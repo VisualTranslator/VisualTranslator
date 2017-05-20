@@ -4,6 +4,8 @@
 #include <QtWidgets>
 #include <QHotkey>
 #include <tray.h>
+#include <recognizer.h>
+#include <screenarea.h>
 
 class VisualTranslator : public QWidget
 {
@@ -11,6 +13,9 @@ class VisualTranslator : public QWidget
 private:
     QHotkey *hotkey;
     Tray *tray;
+    Recognizer *recognizer;
+    ScreenArea *screenArea;
+
 protected:
 
 public:

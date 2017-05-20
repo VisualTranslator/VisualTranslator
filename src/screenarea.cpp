@@ -25,6 +25,8 @@ void ScreenArea::mouseReleaseEvent(QMouseEvent *ev)
     cropped =  screenshot.copy(QRect(start,end));
     rubberBand->hide();
     this->hide();
+
+    emit recognize(cropped);
 }
 
 void ScreenArea::mouseMoveEvent(QMouseEvent *ev)

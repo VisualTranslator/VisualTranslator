@@ -2,6 +2,7 @@
 #define TRAY_H
 
 #include <QtWidgets>
+#include "app.h"
 
 class Tray : public QWidget
 {
@@ -13,7 +14,7 @@ private:
     void addLangMenuItem(QString type, QString title, QVariant data , QIcon icon = QIcon());
 public:
     explicit Tray(QWidget *parent = 0);
-    void showMessage();
+
     QSystemTrayIcon *trayIcon;
     QMenu *menu;
     QMenu *langToMenu;
@@ -21,6 +22,7 @@ public:
 signals:
 
 public slots:
+    void showMessage(const QString &message);
     void chooseFromLang();
     void chooseToLang();
 };

@@ -1,5 +1,4 @@
 #include "tray.h"
-#include "app.h"
 
 Tray::Tray(QWidget *parent) : QWidget(parent)
 {
@@ -50,9 +49,9 @@ void Tray::generateMenu()
     trayIcon->setContextMenu(menu);
 }
 
-void Tray::showMessage()
+void Tray::showMessage(const QString &message)
 {
-     trayIcon->showMessage(QString("Message"), QString("Test message"));
+     trayIcon->showMessage(QString("Message"), message);
 }
 
 void Tray::chooseFromLang()
