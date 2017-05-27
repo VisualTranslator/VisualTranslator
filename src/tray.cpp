@@ -51,7 +51,7 @@ void Tray::generateMenu()
 
 void Tray::showMessage(const QString &message)
 {
-     trayIcon->showMessage(QString("Message"), message);
+     trayIcon->showMessage(QString("VisualTranslator"), message);
 }
 
 void Tray::chooseFromLang()
