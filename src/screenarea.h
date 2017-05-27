@@ -11,6 +11,7 @@ private:
     QPixmap screenshot, cropped;
     QPoint start, end;
     QRubberBand *rubberBand;
+    bool isActive;
     Pix* qImage2PIX(QImage& qImage);
     void translate(char *text, char *lang);
     void replyFinished();
@@ -18,6 +19,7 @@ protected:
     virtual void mousePressEvent(QMouseEvent *ev);
     virtual void mouseReleaseEvent(QMouseEvent *ev);
     virtual void mouseMoveEvent(QMouseEvent *ev);
+    virtual void paintEvent(QPaintEvent *event);
 
 public:
     ScreenArea(QWidget *parent = 0);
