@@ -37,26 +37,11 @@ RESOURCES += \
 
 DISTFILES +=
 
-#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../MinGW/lib/ -llept
-#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../MinGW/lib/ -llept
-#else:unix: LIBS += -L$$PWD/../../../../../MinGW/lib/ -llept
+unix|win32: LIBS += -L$$PWD/'Leptonica/lib/' -lleptonica-1.74.4
+unix|win32: LIBS += -L$$PWD/'Tesseract/lib/' -ltesseract400
 
-#INCLUDEPATH += $$PWD/../../../../../MinGW/include/leptonica
-#DEPENDPATH += $$PWD/../../../../../MinGW/include/leptonica
+INCLUDEPATH += $$PWD/'Leptonica/include/'
+INCLUDEPATH += $$PWD/'Tesseract/include/'
 
-#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../MinGW/lib/ -ltesseract
-#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../MinGW/lib/ -ltesseract
-#else:unix: LIBS += -L$$PWD/../../../../../MinGW/lib/ -ltesseract
-
-#INCLUDEPATH += $$PWD/../../../../../MinGW/include/tesseract
-#DEPENDPATH += $$PWD/../../../../../MinGW/include/tesseract
-
-unix|win32: LIBS += -L$$PWD/Leptonica/lib/ -llept
-
-INCLUDEPATH += $$PWD/Leptonica/include
-DEPENDPATH += $$PWD/Leptonica/include
-
-unix|win32: LIBS += -L$$PWD/Tesseract/lib/ -ltesseract
-
-INCLUDEPATH += $$PWD/Tesseract/include
-DEPENDPATH += $$PWD/Tesseract/include
+DEPENDPATH += $$PWD/'Leptonica/include/'
+DEPENDPATH += $$PWD/'Tesseract/include/'

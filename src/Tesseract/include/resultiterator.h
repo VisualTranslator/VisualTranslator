@@ -19,13 +19,14 @@
 //
 ///////////////////////////////////////////////////////////////////////
 
-#ifndef TESSERACT_CCMAIN_RESULT_ITERATOR_H__
-#define TESSERACT_CCMAIN_RESULT_ITERATOR_H__
+#ifndef TESSERACT_CCMAIN_RESULT_ITERATOR_H_
+#define TESSERACT_CCMAIN_RESULT_ITERATOR_H_
 
 #include "platform.h"
 #include "ltrresultiterator.h"
-#include "genericvector.h"
 
+template <typename T> class GenericVector;
+template <typename T> class GenericVectorEqEq;
 class BLOB_CHOICE_IT;
 class WERD_RES;
 class STRING;
@@ -45,8 +46,8 @@ class TESS_API ResultIterator : public LTRResultIterator {
   virtual ~ResultIterator() {}
 
   // ============= Moving around within the page ============.
-  /** 
-   * Moves the iterator to point to the start of the page to begin 
+  /**
+   * Moves the iterator to point to the start of the page to begin
    * an iteration.
    */
   virtual void Begin();
@@ -80,6 +81,10 @@ class TESS_API ResultIterator : public LTRResultIterator {
   */
   virtual bool IsAtFinalElement(PageIteratorLevel level,
                                 PageIteratorLevel element) const;
+
+  // ============= Functions that refer to words only ============.
+  // Returns the number of blanks before the current word.
+  int BlanksBeforeWord() const;
 
   // ============= Accessing data ==============.
 
@@ -180,7 +185,7 @@ class TESS_API ResultIterator : public LTRResultIterator {
   void MoveToLogicalStartOfTextline();
 
   /**
-   * Precondition: current_paragraph_is_ltr_ and in_minor_direction_ 
+   * Precondition: current_paragraph_is_ltr_ and in_minor_direction_
    * are set.
    */
   void MoveToLogicalStartOfWord();
@@ -230,8 +235,14 @@ class TESS_API ResultIterator : public LTRResultIterator {
 
   /** Is the currently pointed-at character in a minor-direction sequence? */
   bool in_minor_direction_;
+
+  /**
+   * Should detected inter-word spaces be preserved, or "compressed" to a single
+   * space character (default behavior).
+   */
+  bool preserve_interword_spaces_;
 };
 
 }  // namespace tesseract.
 
-#endif  // TESSERACT_CCMAIN_RESULT_ITERATOR_H__
+#endif  // TESSERACT_CCMAIN_RESULT_ITERATOR_H_
