@@ -27,17 +27,9 @@
 extern char *alloc_string(inT32 count);
 // free a string.
 extern void free_string(char *string);
-// allocate memory
-extern void *alloc_struct(inT32 count, const char *name = NULL);
-// free a structure.
-extern void free_struct(void *deadstruct, inT32, const char *name = NULL);
 // get some memory
 extern void *alloc_mem(inT32 count);
-// get some memory initialized to 0.
-extern void *alloc_big_zeros(inT32 count);
 // free mem from alloc_mem
 extern void free_mem(void *oldchunk);
-// free mem from alloc_big_zeros
-extern void free_big_mem(void *oldchunk);
 
 #endif

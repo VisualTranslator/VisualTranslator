@@ -3,8 +3,8 @@
 
 #include <QObject>
 #include <QtWidgets>
-#include "allheaders.h"
-#include "baseapi.h"
+#include <allheaders.h>
+#include <baseapi.h>
 #include "translator.h"
 
 class Recognizer : public QObject
