@@ -17,11 +17,10 @@
 //
 ///////////////////////////////////////////////////////////////////////
 
-#ifndef TESSERACT_API_APITYPES_H_
-#define TESSERACT_API_APITYPES_H_
+#ifndef TESSERACT_API_APITYPES_H__
+#define TESSERACT_API_APITYPES_H__
 
 #include "publictypes.h"
-#include "version.h"
 
 // The types used by the API and Page/ResultIterator can be found in:
 //   ccstruct/publictypes.h
@@ -31,4 +30,4 @@
 // than the lower-level one, and lower-level code should be sure to include
 // only the lower-level file.
 
-#endif  // TESSERACT_API_APITYPES_H_
+#endif  // TESSERACT_API_APITYPES_H__

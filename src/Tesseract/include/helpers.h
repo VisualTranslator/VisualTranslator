@@ -27,60 +27,10 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <functional>
-#include <string>
-
-#include "host.h"
-
-// TODO(rays) Put the rest of the helpers in the namespace.
-namespace tesseract {
-
-// A simple linear congruential random number generator, using Knuth's
-// constants from:
-// http://en.wikipedia.org/wiki/Linear_congruential_generator.
-class TRand {
- public:
-  TRand() : seed_(1) {}
-  // Sets the seed to the given value.
-  void set_seed(uinT64 seed) {
-    seed_ = seed;
-  }
-  // Sets the seed using a hash of a string.
-  void set_seed(const std::string& str) {
-    std::hash<std::string> hasher;
-    set_seed(static_cast<uinT64>(hasher(str)));
-  }
-
-  // Returns an integer in the range 0 to MAX_INT32.
-  inT32 IntRand() {
-    Iterate();
-    return seed_ >> 33;
-  }
-  // Returns a floating point value in the range [-range, range].
-  double SignedRand(double range) {
-    return range * 2.0 * IntRand() / MAX_INT32 - range;
-  }
-  // Returns a floating point value in the range [0, range].
-  double UnsignedRand(double range) {
-    return range * IntRand() / MAX_INT32;
-  }
-
- private:
-  // Steps the generator to the next value.
-  void Iterate() {
-    seed_ *= 6364136223846793005ULL;
-    seed_ += 1442695040888963407ULL;
-  }
-
-  // The current value of the seed.
-  uinT64 seed_;
-};
-
-}  // namespace tesseract
 
 // Remove newline (if any) at the end of the string.
 inline void chomp_string(char *str) {
-  int last_index = static_cast<int>(strlen(str)) - 1;
+  int last_index = strlen(str) - 1;
   while (last_index >= 0 &&
          (str[last_index] == '\n' || str[last_index] == '\r')) {
     str[last_index--] = '\0';
@@ -90,14 +40,6 @@ inline void chomp_string(char *str) {
 // Advance the current pointer of the file if it points to a newline character.
 inline void SkipNewline(FILE *file) {
   if (fgetc(file) != '\n') fseek(file, -1, SEEK_CUR);
-}
-
-// Swaps the two args pointed to by the pointers.
-// Operator= and copy constructor must work on T.
-template<typename T> inline void Swap(T* p1, T* p2) {
-  T tmp(*p2);
-  *p2 = *p1;
-  *p1 = tmp;
 }
 
 // qsort function to sort 2 floats.
@@ -182,7 +124,7 @@ inline int IntCastRounded(double x) {
 
 // Reverse the order of bytes in a n byte quantity for big/little-endian switch.
 inline void ReverseN(void* ptr, int num_bytes) {
-  char* cptr = static_cast<char*>(ptr);
+  char *cptr = reinterpret_cast<char *>(ptr);
   int halfsize = num_bytes / 2;
   for (int i = 0; i < halfsize; ++i) {
     char tmp = cptr[i];

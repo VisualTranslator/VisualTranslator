@@ -17,31 +17,23 @@
 //
 ///////////////////////////////////////////////////////////////////////
 
-#ifndef TESSERACT_CCUTIL_PLATFORM_H_
-#define TESSERACT_CCUTIL_PLATFORM_H_
-
-#include <string.h>
+#ifndef TESSERACT_CCUTIL_PLATFORM_H__
+#define TESSERACT_CCUTIL_PLATFORM_H__
 
 #define DLLSYM
 #ifdef _WIN32
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif /* NOMINMAX */
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
 #ifdef __GNUC__
 #define ultoa _ultoa
+//typedef struct _BLOB {
+//  unsigned int cbSize;
+//  char *pBlobData;
+//} BLOB, *LPBLOB;
 #endif  /* __GNUC__ */
 #define SIGNED
-#if defined(_MSC_VER)
-#if (_MSC_VER < 1900)
 #define snprintf _snprintf
-#endif
 #if (_MSC_VER <= 1400)
 #define vsnprintf _vsnprintf
-#endif /* (_MSC_VER <= 1400) */
-#endif /* defined(_MSC_VER) */
+#endif /* _WIN32 */
 #else
 #define __UNIX__
 #include <limits.h>
@@ -51,18 +43,6 @@
 #define MAX_PATH PATH_MAX
 #endif
 #define SIGNED signed
-#endif
-
-// Fix to map between google use of string without std and everywhere else.
-#ifdef USE_STD_NAMESPACE
-#include <string>
-using std::string;
-#endif
-
-#if defined(_WIN32) || defined(__CYGWIN__)
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
 #endif
 
 #if defined(_WIN32) || defined(__CYGWIN__)
@@ -89,4 +69,4 @@ using std::string;
     #endif
 #endif
 
-#endif  // TESSERACT_CCUTIL_PLATFORM_H_
+#endif  // TESSERACT_CCUTIL_PLATFORM_H__

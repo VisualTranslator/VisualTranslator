@@ -14,6 +14,5 @@
         <file>resources/lang_icons/ru.png</file>
         <file>resources/lang_icons/auto.png</file>
         <file>resources/cursor.png</file>
-        <file>resources/tessdata/eng.traineddata</file>
     </qresource>
 </RCC>

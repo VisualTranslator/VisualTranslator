@@ -33,7 +33,6 @@
 #include <stdarg.h>
 
     /* General and configuration defs */
-#include "endianness.h"
 #include "environ.h"
 
     /* Generic and non-image-specific containers */
@@ -43,7 +42,6 @@
 #include "list.h"
 #include "ptra.h"
 #include "queue.h"
-#include "rbtree.h"
 #include "stack.h"
 
     /* Imaging */
@@ -58,7 +56,6 @@
 #include "pix.h"
 #include "recog.h"
 #include "regutils.h"
-#include "stringcode.h"
 #include "sudoku.h"
 #include "watershed.h"
 

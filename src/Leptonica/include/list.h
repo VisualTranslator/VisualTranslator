@@ -10,7 +10,7 @@
  -     copyright notice, this list of conditions and the following
  -     disclaimer in the documentation and/or other materials
  -     provided with the distribution.
- -
+ - 
  -  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  -  ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  -  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -28,13 +28,12 @@
 #ifndef  LEPTONICA_LIST_H
 #define  LEPTONICA_LIST_H
 
-/*!
- * \file list.h
+/*
+ *   list.h
  *
- * <pre>
  *       Cell for double-linked lists
  *
- *       This allows composition of a list of cells with
+ *       This allows composition of a list of cells with 
  *           prev, next and data pointers.  Generic data
  *           structures hang on the list cell data pointers.
  *
@@ -55,7 +54,7 @@
  *             L_BEGIN_LIST_FORWARD(head, elem)
  *                 <do something with elem and/or elem->data >
  *             L_END_LIST
- * </pre>
+ *
  */
 
 struct DoubleLinkedList
@@ -67,7 +66,7 @@ struct DoubleLinkedList
 typedef struct DoubleLinkedList    DLLIST;
 
 
-    /*!  Simple list traverse macro - forward */
+    /*  Simple list traverse macros */
 #define L_BEGIN_LIST_FORWARD(head, element) \
         { \
         DLLIST   *_leptvar_nextelem_; \
@@ -75,7 +74,6 @@ typedef struct DoubleLinkedList    DLLIST;
             _leptvar_nextelem_ = (element)->next;
 
 
-    /*!  Simple list traverse macro - reverse */
 #define L_BEGIN_LIST_REVERSE(tail, element) \
         { \
         DLLIST   *_leptvar_prevelem_; \
@@ -83,7 +81,6 @@ typedef struct DoubleLinkedList    DLLIST;
             _leptvar_prevelem_ = (element)->prev;
 
 
-    /*!  Simple list traverse macro - end of a list traverse */
 #define L_END_LIST    }}
 
 

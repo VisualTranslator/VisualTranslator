@@ -14,11 +14,8 @@ void Recognizer::start(const QPixmap &img)
     char *outText;
     TessBaseAPI *api = new TessBaseAPI();
 
-
-    qDebug() << qApp->applicationDirPath();
-
-    if (api->Init("C:\\Users\\Andriy\\Documents\\Visual Studio 2017\\Projects\\ConsoleApplication6\\Debug\\", "eng")) {
-        qDebug() << "Could not initialize tesseract.\n";
+    if (api->Init(NULL, "eng")) {
+        fprintf(stderr, "Could not initialize tesseract.\n");
         exit(1);
     }
 
@@ -27,10 +24,9 @@ void Recognizer::start(const QPixmap &img)
     api->SetImage(image);
     outText = api->GetUTF8Text();
 
-    qDebug() << outText;
-
     emit translate(outText);
 
+    delete [] outText;
     api->End();
     pixDestroy(&image);
 }
@@ -39,6 +35,7 @@ void Recognizer::showResult(const QString &result)
 {
     emit signalShowResult(result);
 }
+
 
 Pix* Recognizer::qImage2PIX(QImage& qImage) {
   Pix * pixs;
