@@ -13,11 +13,9 @@ void Recognizer::start(const QPixmap &img)
 {
     char *outText;
     TessBaseAPI *api = new TessBaseAPI();
+    QString langDir = QString("%1").arg(qApp->applicationDirPath());
 
-
-    qDebug() << qApp->applicationDirPath();
-
-    if (api->Init("C:\\Users\\Andriy\\Documents\\Visual Studio 2017\\Projects\\ConsoleApplication6\\Debug\\", "eng")) {
+    if (api->Init(langDir.toLatin1().data(), "eng")) {
         qDebug() << "Could not initialize tesseract.\n";
         exit(1);
     }
