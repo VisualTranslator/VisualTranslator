@@ -8,33 +8,22 @@ Translator::Translator(QObject *parent) : QObject(parent)
 
 void Translator::start(char *&text)
 {
-    QJsonObject  obj;
-    obj.insert("to", QJsonValue::fromVariant("ru"));
-    obj.insert("text", QJsonValue::fromVariant(text));
-
-    QJsonDocument doc(obj);
-    QByteArray bytes = doc.toJson();
-
-    //connect(qNetwork,SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), this, SLOT(handleSSLErrors(QNetworkReply*)));
-    QByteArray postDataSize = QByteArray::number(bytes.size());
-    QUrl serviceURL("http://www.transltr.org/api/translate");
-    QNetworkRequest request(serviceURL);
-
-    request.setRawHeader("User-Agent", "My app name v0.1");
-    request.setRawHeader("X-Custom-User-Agent", "My app name v0.1");
-    request.setRawHeader("Content-Type", "application/json");
-    request.setRawHeader("Content-Length", postDataSize);
-
-    qNetwork->post(request, bytes);
+    //TODO allow to change sl (from lang) and dt(to lang)
+    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=uk&dt=t&q=%1").arg(*&text);
+    QNetworkRequest request(url);
+    qNetwork->get(request);
 }
 
 void Translator::handleNetworkData(QNetworkReply *reply)
 {
+    // receive raw responce from Google Translator
     QString strReply = (QString)reply->readAll();
-    QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());
-    QJsonObject jsonObject = jsonResponse.object();
 
-    qDebug() << jsonObject["translationText"].toString();
-    emit showResult(jsonObject["translationText"].toString());
+    // parse the string with RegExp to receive only needed part
+    QRegExp rx("\"([^\"]*)\"");
+    rx.indexIn(strReply);
+    QString result = rx.capturedTexts()[1];
+
+    emit showResult(result);
     reply->deleteLater();
 }

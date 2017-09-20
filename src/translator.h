@@ -23,7 +23,6 @@ signals:
 public slots:
     void start(char *&text);
     void handleNetworkData(QNetworkReply *reply);
-    //void handleSSLErrors(QNetworkReply* reply);
 };
 
 #endif // TRANSLATOR_H
