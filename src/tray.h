@@ -12,13 +12,12 @@ private:
     QActionGroup *menuLangFromGroup;
     virtual void generateMenu();
     void addLangMenuItem(QString type, QString title, QVariant data , QIcon icon = QIcon());
-public:
-    explicit Tray(QWidget *parent = 0);
-
     QSystemTrayIcon *trayIcon;
     QMenu *menu;
     QMenu *langToMenu;
     QMenu *langFromMenu;
+public:
+    explicit Tray(QWidget *parent = 0);
 signals:
 
 public slots:

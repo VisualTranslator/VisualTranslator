@@ -8,8 +8,10 @@ Translator::Translator(QObject *parent) : QObject(parent)
 
 void Translator::start(char *&text)
 {
-    //TODO allow to change sl (from lang) and dt(to lang)
-    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=uk&dt=t&q=%1").arg(*&text);
+    QString langFrom = App::theApp()->settings()->value("Settings/Languages/from").toString();
+    QString langTo = App::theApp()->settings()->value("Settings/Languages/to").toString();
+
+    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(*&text);
     QNetworkRequest request(url);
     qNetwork->get(request);
 }
