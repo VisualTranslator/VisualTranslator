@@ -11,7 +11,6 @@ private:
     QActionGroup *menuLangToGroup;
     QActionGroup *menuLangFromGroup;
     virtual void generateMenu();
-    void addLangMenuItem(QString type, QString title, QVariant data , QIcon icon = QIcon());
     QSystemTrayIcon *trayIcon;
     QMenu *menu;
     QMenu *langToMenu;

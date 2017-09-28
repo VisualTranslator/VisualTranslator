@@ -16,18 +16,20 @@ void Tray::generateMenu()
     menuLangFromGroup = new QActionGroup(this);
     menuLangToGroup = new QActionGroup(this);
 
-    addLangMenuItem("from", "Autodetect", QVariant("auto"), QIcon(":/resources/lang_icons/auto.png"));
-    addLangMenuItem("from", "Arabic", QVariant("ar"), QIcon(":/resources/lang_icons/sa.png"));
-    addLangMenuItem("from", "English", QVariant("en"), QIcon(":/resources/lang_icons/us.png"));
-    addLangMenuItem("from", "French", QVariant("fr"), QIcon(":/resources/lang_icons/fr.png"));
-    addLangMenuItem("from", "German", QVariant("de"), QIcon(":/resources/lang_icons/de.png"));
-    addLangMenuItem("from", "Italian", QVariant("it"), QIcon(":/resources/lang_icons/it.png"));
-    addLangMenuItem("from", "Japanese", QVariant("ja"), QIcon(":/resources/lang_icons/jp.png"));
-    addLangMenuItem("from", "Korean", QVariant("ko"), QIcon(":/resources/lang_icons/kr.png"));
-    addLangMenuItem("from", "Portuguese", QVariant("pt"), QIcon(":/resources/lang_icons/pt.png"));
-    addLangMenuItem("from", "Russian", QVariant("ru"), QIcon(":/resources/lang_icons/ru.png"));
-    addLangMenuItem("from", "Spanish", QVariant("es"), QIcon(":/resources/lang_icons/es.png"));
-    addLangMenuItem("from", "Ukrainian", QVariant("uk"), QIcon(":/resources/lang_icons/ua.png"));
+    QDir tessdataFolder(qApp->applicationDirPath() + "/tessdata");
+    QStringList tessFiles = tessdataFolder.entryList();
+
+    addLangMenuItem("from", "Arabic", QVariant("ar"), QIcon(":/resources/lang_icons/sa.png"), tessFiles.contains("ara.traineddata"));
+    addLangMenuItem("from", "English", QVariant("en"), QIcon(":/resources/lang_icons/us.png"), tessFiles.contains("eng.traineddata"));
+    addLangMenuItem("from", "French", QVariant("fr"), QIcon(":/resources/lang_icons/fr.png"), tessFiles.contains("fra.traineddata"));
+    addLangMenuItem("from", "German", QVariant("de"), QIcon(":/resources/lang_icons/de.png"), tessFiles.contains("fra.traineddata"));
+    addLangMenuItem("from", "Italian", QVariant("it"), QIcon(":/resources/lang_icons/it.png"), tessFiles.contains("ita.traineddata"));
+    addLangMenuItem("from", "Japanese", QVariant("ja"), QIcon(":/resources/lang_icons/jp.png"), tessFiles.contains(("jpn.traineddata")));
+    addLangMenuItem("from", "Korean", QVariant("ko"), QIcon(":/resources/lang_icons/kr.png"), tessFiles.contains(("kor.traineddata")));
+    addLangMenuItem("from", "Portuguese", QVariant("pt"), QIcon(":/resources/lang_icons/pt.png"), tessFiles.contains(("por.traineddata")));
+    addLangMenuItem("from", "Russian", QVariant("ru"), QIcon(":/resources/lang_icons/ru.png"), tessFiles.contains("rus.traineddata"));
+    addLangMenuItem("from", "Spanish", QVariant("es"), QIcon(":/resources/lang_icons/es.png"), tessFiles.contains("spa.traineddata"));
+    addLangMenuItem("from", "Ukrainian", QVariant("uk"), QIcon(":/resources/lang_icons/ua.png"), tessFiles.contains("ukr.traineddata"));
 
     addLangMenuItem("to", "Arabic", QVariant("ar"), QIcon(":/resources/lang_icons/sa.png"));
     addLangMenuItem("to", "English", QVariant("en"), QIcon(":/resources/lang_icons/us.png"));
@@ -66,29 +68,25 @@ void Tray::chooseToLang()
     App::theApp()->settings()->setValue("/Settings/Languages/to", action->data().toString());
 }
 
-void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon icon)
+void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon icon, bool langDownloaded)
 {
+    QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "en").toString();
+    QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "en").toString();
+
     QAction *item = new QAction(title);
     item->setCheckable(true);
     item->setData(data);
     item->setIcon(icon);
 
-    QSettings *tmpSettings = App::theApp()->settings();
-    // uncomment line below if you want to clear previous stored settings (needed only when settings structure has changed)
-    //tmpSettings->clear();
-    tmpSettings->beginGroup("/Settings");
-        tmpSettings->beginGroup("/Languages");
-            QString settingsLangFrom = tmpSettings->value("/from", "auto").toString();
-            QString settingsLangTo = tmpSettings->value("/to", "en").toString();
-        tmpSettings->endGroup();
-    tmpSettings->endGroup();
-
     if (type == "from") {
+       item->setEnabled(langDownloaded);
        langFromMenu->addAction(item);
        if (data.toString() == settingsLangFrom) item->setChecked(true);
        QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
        menuLangFromGroup->addAction(item);
-    } else {
+    }
+
+    if (type == "to") {
         langToMenu->addAction(item);
         if (data.toString() == settingsLangTo) item->setChecked(true);
         QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseToLang()));
