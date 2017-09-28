@@ -13,7 +13,8 @@ void Recognizer::start(const QPixmap &img)
 {
     char *outText;
     TessBaseAPI *api = new TessBaseAPI();
-    QString langDir = QString("%1").arg(qApp->applicationDirPath());
+
+    QString langDir = qApp->applicationDirPath();
 
     if (api->Init(langDir.toLatin1().data(), "eng")) {
         qDebug() << "Could not initialize tesseract.\n";
@@ -24,8 +25,6 @@ void Recognizer::start(const QPixmap &img)
     Pix *image = qImage2PIX(qImg);
     api->SetImage(image);
     outText = api->GetUTF8Text();
-
-    qDebug() << outText;
 
     emit translate(outText);
 

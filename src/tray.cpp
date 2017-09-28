@@ -57,24 +57,13 @@ void Tray::showMessage(const QString &message)
 void Tray::chooseFromLang()
 {
     QAction *action = qobject_cast<QAction*>(sender());
-    QSettings *tmpSettings = App::theApp()->settings();
-
-    tmpSettings->beginGroup("/Settings");
-        tmpSettings->beginGroup("/Languages");
-            tmpSettings->setValue("/from", action->data().toString());
-        tmpSettings->endGroup();
-    tmpSettings->endGroup();
+    App::theApp()->settings()->setValue("/Settings/Languages/from", action->data().toString());
 }
 
 void Tray::chooseToLang()
 {
     QAction *action = qobject_cast<QAction*>(sender());
-    QSettings *tmpSettings = App::theApp()->settings();
-    tmpSettings->beginGroup("/Settings");
-        tmpSettings->beginGroup("/Languages");
-            tmpSettings->setValue("/to", action->data().toString());
-        tmpSettings->endGroup();
-    tmpSettings->endGroup();
+    App::theApp()->settings()->setValue("/Settings/Languages/to", action->data().toString());
 }
 
 void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon icon)
