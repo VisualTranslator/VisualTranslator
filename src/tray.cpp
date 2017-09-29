@@ -73,7 +73,16 @@ void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon ic
     QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "en").toString();
     QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "en").toString();
 
-    QAction *item = new QAction(title);
+    QString itemTitle = title;
+    if (langDownloaded && type == "from") {
+        itemTitle = title + " (downloaded)";
+    }
+
+    if (!langDownloaded && type == "from") {
+        itemTitle = title + " (click to download)";
+    }
+
+    QAction *item = new QAction(itemTitle);
     item->setCheckable(true);
     item->setData(data);
     item->setIcon(icon);
