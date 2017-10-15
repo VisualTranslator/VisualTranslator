@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     app.cpp \
     screenarea.cpp \
     recognizer.cpp \
-    translator.cpp
+    translator.cpp \
+    settingsdialog.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -26,7 +27,8 @@ HEADERS  += \
     app.h \
     screenarea.h \
     recognizer.h \
-    translator.h
+    translator.h \
+    settingsdialog.h
 
 FORMS    +=
 include(qhotkey.pri)

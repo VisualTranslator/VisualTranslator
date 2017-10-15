@@ -14,6 +14,5 @@ int main(int argc, char *argv[])
         a.setStyleSheet(style);
         file.close();
     }
-
     return a.exec();
 }

@@ -3,6 +3,7 @@
 
 #include <QtWidgets>
 #include "app.h"
+#include "settingsdialog.h"
 
 class Tray : public QWidget
 {
@@ -16,6 +17,7 @@ private:
     QMenu *menu;
     QMenu *langToMenu;
     QMenu *langFromMenu;
+    SettingsDialog *settingsDialog;
 public:
     explicit Tray(QWidget *parent = 0);
 signals:
