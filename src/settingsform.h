@@ -19,6 +19,11 @@ public slots:
     void showForm();
     virtual void closeEvent(QCloseEvent *event);
 
+private slots:
+    void on_btnCancel_clicked();
+
+    void on_btnSaveChanges_clicked();
+
 private:
     Ui::SettingsForm *ui;
 };
