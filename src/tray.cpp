@@ -53,7 +53,8 @@ void Tray::generateMenu()
 
 void Tray::showMessage(const QString &message)
 {
-     trayIcon->showMessage(QString("VisualTranslator"), message);
+    // TODO fix issue with the visible message limit
+    trayIcon->showMessage(QString("VisualTranslator"), message);
 }
 
 void Tray::chooseFromLang()

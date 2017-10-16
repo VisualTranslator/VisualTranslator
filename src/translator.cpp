@@ -18,13 +18,17 @@ void Translator::start(char *&text)
 
 void Translator::handleNetworkData(QNetworkReply *reply)
 {
-    // receive raw responce from Google Translator
+    // receive raw response from Google Translator
     QString strReply = (QString)reply->readAll();
 
-    // parse the string with RegExp to receive only needed part
-    QRegExp rx("\"([^\"]*)\"");
-    rx.indexIn(strReply);
-    QString result = rx.capturedTexts()[1];
+    // parse translated strings from json response
+    QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());
+    QJsonArray rows = jsonResponse.array()[0].toArray();
+    QString result;
+
+    for (int i = 0; i < rows.size(); i++) {
+        result += rows[i].toArray()[0].toString();
+    }
 
     emit showResult(result);
     reply->deleteLater();
