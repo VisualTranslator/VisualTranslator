@@ -44,6 +44,10 @@ void Tray::generateMenu()
     addLangMenuItem("to", "Ukrainian", QVariant("uk"), QIcon(":/resources/lang_icons/ua.png"));
 
     menu->addMenu(langFromMenu);
+    langFromMenu->addSeparator();
+    QAction *downloadLangs = new QAction("Load more languages");
+    langFromMenu->addAction(downloadLangs);
+
     menu->addMenu(langToMenu);
     menu->addSeparator();
     menu->addAction("Exit", qApp, SLOT(quit()));
@@ -74,22 +78,12 @@ void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon ic
     QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "en").toString();
     QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "en").toString();
 
-    QString itemTitle = title;
-    if (langDownloaded && type == "from") {
-        itemTitle = title + " (downloaded)";
-    }
-
-    if (!langDownloaded && type == "from") {
-        itemTitle = title + " (click to download)";
-    }
-
-    QAction *item = new QAction(itemTitle);
+    QAction *item = new QAction(title);
     item->setCheckable(true);
     item->setData(data);
     item->setIcon(icon);
 
-    if (type == "from") {
-       item->setEnabled(langDownloaded);
+    if (langDownloaded && type == "from") {
        langFromMenu->addAction(item);
        if (data.toString() == settingsLangFrom) item->setChecked(true);
        QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
