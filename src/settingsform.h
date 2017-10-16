@@ -19,9 +19,6 @@ public slots:
     void showForm();
     virtual void closeEvent(QCloseEvent *event);
 
-private slots:
-    void on_pushButton_clicked();
-
 private:
     Ui::SettingsForm *ui;
 };
