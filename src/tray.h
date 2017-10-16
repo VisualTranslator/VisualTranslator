@@ -4,6 +4,7 @@
 #include <QtWidgets>
 #include "app.h"
 #include "settingsform.h"
+#include "downloadlanguageform.h"
 
 class Tray : public QWidget
 {
@@ -18,6 +19,7 @@ private:
     QMenu *langToMenu;
     QMenu *langFromMenu;
     SettingsForm *settingsForm;
+    DownloadLanguageForm *downloadLanguagesForm;
 public:
     explicit Tray(QWidget *parent = 0);
 signals:

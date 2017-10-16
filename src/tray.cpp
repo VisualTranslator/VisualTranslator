@@ -5,6 +5,7 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     trayIcon = new QSystemTrayIcon(QIcon(":/resources/tray.png"));
     trayIcon->setToolTip(QString("Visual Translator"));
     settingsForm = new SettingsForm(parent);
+    downloadLanguagesForm = new DownloadLanguageForm(parent);
     trayIcon->show();
     generateMenu();
 }
@@ -46,8 +47,7 @@ void Tray::generateMenu()
 
     menu->addMenu(langFromMenu);
     langFromMenu->addSeparator();
-    QAction *downloadLangs = new QAction("Load more languages");
-    langFromMenu->addAction(downloadLangs);
+    langFromMenu->addAction("Download more languages", downloadLanguagesForm, SLOT(showForm()));
 
     menu->addMenu(langToMenu);
     menu->addSeparator();

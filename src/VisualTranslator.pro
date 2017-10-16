@@ -19,7 +19,9 @@ SOURCES += main.cpp \
     screenarea.cpp \
     recognizer.cpp \
     translator.cpp \
-    settingsform.cpp
+    settingsform.cpp \
+    downloadlanguageform.cpp \
+    downloadlanguageitem.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -28,10 +30,14 @@ HEADERS  += \
     screenarea.h \
     recognizer.h \
     translator.h \
-    settingsform.h
+    settingsform.h \
+    downloadlanguageform.h \
+    downloadlanguageitem.h
 
 FORMS    += \
-    settingsform.ui
+    settingsform.ui \
+    downloadlanguageform.ui \
+    downloadlanguageitem.ui
 include(qhotkey.pri)
 
 
