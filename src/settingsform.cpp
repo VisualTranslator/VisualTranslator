@@ -7,6 +7,7 @@ SettingsForm::SettingsForm(QWidget *parent) :
     ui(new Ui::SettingsForm)
 {
     ui->setupUi(this);
+    this->setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::CustomizeWindowHint);
 }
 
 SettingsForm::~SettingsForm()
