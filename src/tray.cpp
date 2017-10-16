@@ -4,7 +4,7 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
 {
     trayIcon = new QSystemTrayIcon(QIcon(":/resources/tray.png"));
     trayIcon->setToolTip(QString("Visual Translator"));
-    settingsDialog = new SettingsDialog(parent);
+    settingsForm = new SettingsForm(parent);
     trayIcon->show();
     generateMenu();
 }
@@ -51,7 +51,8 @@ void Tray::generateMenu()
 
     menu->addMenu(langToMenu);
     menu->addSeparator();
-    menu->addAction("Settings...", settingsDialog, SLOT(showDialog()));
+    menu->addAction("Settings...", settingsForm, SLOT(showForm()));
+
     menu->addSeparator();
     menu->addAction("Exit", qApp, SLOT(quit()));
     trayIcon->setContextMenu(menu);
