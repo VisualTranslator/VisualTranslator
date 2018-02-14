@@ -6,7 +6,8 @@
 
 QT       += core gui network
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets \
+                                        network
 
 TARGET = VisualTranslator
 TEMPLATE = app
@@ -21,7 +22,8 @@ SOURCES += main.cpp \
     translator.cpp \
     settingsform.cpp \
     downloadlanguageform.cpp \
-    downloadlanguageitem.cpp
+    downloadlanguageitem.cpp \
+    networkfiledownloader.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -32,7 +34,8 @@ HEADERS  += \
     translator.h \
     settingsform.h \
     downloadlanguageform.h \
-    downloadlanguageitem.h
+    downloadlanguageitem.h \
+    networkfiledownloader.h
 
 FORMS    += \
     settingsform.ui \
