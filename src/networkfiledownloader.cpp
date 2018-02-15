@@ -5,9 +5,10 @@ NetworkFileDownloader::NetworkFileDownloader(QObject *parent) : QObject(parent)
     this->manager = new QNetworkAccessManager;
 }
 
-void NetworkFileDownloader::download(QString url, QString fileName)
+void NetworkFileDownloader::download(QString url)
 {
     QStringList filePathList = url.split('/');
+    QString fileName = filePathList.at(filePathList.count() - 1);
     QString saveFilePath = QString(qApp->applicationDirPath() + "/tessdata/" + fileName);
 
     QNetworkRequest request;

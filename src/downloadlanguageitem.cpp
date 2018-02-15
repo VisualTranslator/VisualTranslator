@@ -20,17 +20,53 @@ DownloadLanguageItem::~DownloadLanguageItem()
 
 void DownloadLanguageItem::on_pushButton_clicked()
 {
-    //TODO add links for all languages
-    //TODO rewrite external links with self-hosted
     QString url;
-    QString fileName;
+    if (name == "Arabic") {
+        url = "https://dl.dropboxusercontent.com/s/7qujorvi4op3tej/ara.traineddata";
+    }
+
+    if (name == "English") {
+        url = "https://dl.dropboxusercontent.com/s/r5qmsfonx7mluc4/eng.traineddata";
+    }
+
     if (name == "French") {
-        url = "https://dl.dropboxusercontent.com/s/a0cdoulz5mldkbq/6.%20The%20Sleep%20Solution%20by%20W.%20Chris%20Winter.epub?dl=0";
-        fileName = "fra.traineddata";
+        url = "https://dl.dropboxusercontent.com/s/ak8pnk2eup3w6e7/fra.traineddata";
+    }
+
+    if (name == "German") {
+        url = "https://dl.dropboxusercontent.com/s/l3083m8285ouhtr/deu.traineddata";
+    }
+
+    if (name == "Italian") {
+        url = "https://dl.dropboxusercontent.com/s/opr15y55o01cm4b/ita.traineddata";
+    }
+
+    if (name == "Japanese") {
+        url = "https://dl.dropboxusercontent.com/s/orsqcy09ohnd8ry/jpn.traineddata";
+    }
+
+    if (name == "Korean") {
+        url = "https://dl.dropboxusercontent.com/s/rkg0vev3jzcgdur/kor.traineddata";
+    }
+
+    if (name == "Portuguese") {
+        url = "https://dl.dropboxusercontent.com/s/tmoion1c26qbx6b/por.traineddata";
+    }
+
+    if (name == "Russian") {
+        url = "https://dl.dropboxusercontent.com/s/3msbg4slhgm6gaq/rus.traineddata";
+    }
+
+    if (name == "Spanish") {
+        url = "https://dl.dropboxusercontent.com/s/pba3sen7o8e3nhf/spa.traineddata";
+    }
+
+    if (name == "Ukrainian") {
+        url = "https://dl.dropboxusercontent.com/s/17at42rlq50cy1z/ukr.traineddata";
     }
 
     if (!url.isEmpty()) {
         NetworkFileDownloader *networkFileDownloader = new NetworkFileDownloader;
-        networkFileDownloader->download(url, fileName);
+        networkFileDownloader->download(url);
     }
 }

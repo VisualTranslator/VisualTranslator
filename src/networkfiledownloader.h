@@ -12,7 +12,7 @@ class NetworkFileDownloader : public QObject
     Q_OBJECT
 public:
     explicit NetworkFileDownloader(QObject *parent = nullptr);
-    void download(QString url, QString fileName);
+    void download(QString url);
 
 private:
     QNetworkAccessManager *manager;
