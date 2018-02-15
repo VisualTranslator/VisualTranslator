@@ -28,6 +28,7 @@ public slots:
     void showMessage(const QString &message);
     void chooseFromLang();
     void chooseToLang();
+    void showMenu(QSystemTrayIcon::ActivationReason r);
 };
 
 #endif // TRAY_H

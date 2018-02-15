@@ -8,6 +8,7 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     downloadLanguagesForm = new DownloadLanguageForm(parent);
     trayIcon->show();
     generateMenu();
+    connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu(QSystemTrayIcon::ActivationReason)));
 }
 
 void Tray::generateMenu()
@@ -99,4 +100,9 @@ void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon ic
         QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseToLang()));
         menuLangToGroup->addAction(item);
     }
+}
+
+void Tray::showMenu(QSystemTrayIcon::ActivationReason r)
+{
+    trayIcon->contextMenu()->exec(QCursor::pos());
 }
