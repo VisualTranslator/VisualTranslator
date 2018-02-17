@@ -19,6 +19,8 @@ public:
 public slots:
     void showForm();
     virtual void closeEvent(QCloseEvent *event);
+    void downloadStart();
+    void onDownloadProgress(qint64 bytesRead, qint64 bytesTotal);
 
 private:
     Ui::DownloadLanguageForm *ui;

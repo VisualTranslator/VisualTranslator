@@ -22,6 +22,10 @@ private slots:
 private:
     QString name;
     Ui::DownloadLanguageItem *ui;
+
+signals:
+    void downloadStart();
+    void downloadProgress(qint64 bytesRead, qint64 bytesTotal);
 };
 
 #endif // DOWNLOADLANGUAGEITEM_H

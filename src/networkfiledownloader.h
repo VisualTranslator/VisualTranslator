@@ -13,18 +13,19 @@ class NetworkFileDownloader : public QObject
 public:
     explicit NetworkFileDownloader(QObject *parent = nullptr);
     void download(QString url);
-
-private:
     QNetworkAccessManager *manager;
     QNetworkReply *reply;
+
+private:
     QFile *file;
+    bool isDownloading;
 
 signals:
 
 public slots:
 
 private slots:
-    void onDownloadProgress(qint64,qint64);
+    //void onDownloadProgress(qint64,qint64);
     void onFinished(QNetworkReply*);
     void onReadyRead();
     void onReplyFinished();

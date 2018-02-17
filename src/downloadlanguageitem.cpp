@@ -21,6 +21,7 @@ DownloadLanguageItem::~DownloadLanguageItem()
 void DownloadLanguageItem::on_pushButton_clicked()
 {
     QString url;
+
     if (name == "Arabic") {
         url = "https://dl.dropboxusercontent.com/s/7qujorvi4op3tej/ara.traineddata";
     }
@@ -65,8 +66,10 @@ void DownloadLanguageItem::on_pushButton_clicked()
         url = "https://dl.dropboxusercontent.com/s/17at42rlq50cy1z/ukr.traineddata";
     }
 
-    if (!url.isEmpty()) {
-        NetworkFileDownloader *networkFileDownloader = new NetworkFileDownloader;
-        networkFileDownloader->download(url);
-    }
+    NetworkFileDownloader *networkFileDownloader = new NetworkFileDownloader();
+    networkFileDownloader->download(url);
+
+    emit downloadStart();
+    connect(networkFileDownloader->reply,SIGNAL(downloadProgress(qint64,qint64)),this, SIGNAL(downloadProgress(qint64, qint64)));
 }
+
