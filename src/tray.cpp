@@ -8,7 +8,7 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     downloadLanguagesForm = new DownloadLanguageForm(parent);
     trayIcon->show();
     generateMenu();
-    connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu(QSystemTrayIcon::ActivationReason)));
+    connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
 }
 
 void Tray::generateMenu()

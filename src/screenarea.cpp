@@ -54,7 +54,7 @@ void ScreenArea::mouseMoveEvent(QMouseEvent *ev)
     update();
 }
 
-void ScreenArea::paintEvent()
+void ScreenArea::paintEvent(QPaintEvent *ev)
 {
     QPainter painter(this);
     painter.drawPixmap(0, 0, screenshot);

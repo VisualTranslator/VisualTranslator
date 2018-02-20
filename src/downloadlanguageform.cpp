@@ -32,7 +32,7 @@ void DownloadLanguageForm::addLanguage(QString name, QString iconPath, bool isDo
     DownloadLanguageItem *downloadLanguageItem = new DownloadLanguageItem(name, iconPath, isDownloaded);
     connect(downloadLanguageItem, SIGNAL(downloadStart()), this, SLOT(downloadStart()));
     connect(downloadLanguageItem, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(onDownloadProgress(qint64,qint64)));
-    connect(downloadLanguageItem, SIGNAL(downloadFinished(QNetworkReply*)), this, SLOT(onDownloadFinished(QNetworkReply*)));
+    connect(downloadLanguageItem, SIGNAL(downloadFinished(QNetworkReply*)), this, SLOT(onDownloadFinished()));
 
     QListWidgetItem *listItem = new QListWidgetItem(ui->listWidget);
 
