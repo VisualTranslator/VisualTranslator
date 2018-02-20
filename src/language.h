@@ -8,6 +8,7 @@ struct Lang
 {
   QString name;
   QString shortName;
+  QString googleName;
   QString url;
 };
 
@@ -19,6 +20,7 @@ public:
     static QString getUrl(QString name);
     static QString getFileName(QString name);
     static QString getShortName(QString name);
+    static QString getGoogleName(QString name);
     static bool isDownloaded(QString name);
 
 private:

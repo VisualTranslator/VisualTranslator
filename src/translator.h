@@ -7,6 +7,7 @@
 #include <QNetworkReply>
 #include <QSslError>
 #include "app.h"
+#include <language.h>
 
 class Translator : public QObject
 {

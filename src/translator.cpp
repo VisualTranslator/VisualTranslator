@@ -8,8 +8,8 @@ Translator::Translator(QObject *parent) : QObject(parent)
 
 void Translator::start(char *&text)
 {
-    QString langFrom = App::theApp()->settings()->value("Settings/Languages/from").toString();
-    QString langTo = App::theApp()->settings()->value("Settings/Languages/to").toString();
+    QString langFrom = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/from").toString());
+    QString langTo = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/to").toString());
 
     QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(*&text);
     QNetworkRequest request(url);

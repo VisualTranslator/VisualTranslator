@@ -32,6 +32,15 @@ QString Language::getShortName(QString name)
     return "";
 }
 
+QString Language::getGoogleName(QString name)
+{
+    foreach (Lang language, Language::languages) {
+        if (language.name == name) return language.googleName;
+    }
+
+    return "";
+}
+
 bool Language::isDownloaded(QString name)
 {
     QDir tessdataFolder(qApp->applicationDirPath() + "/tessdata");
@@ -44,59 +53,69 @@ QList<Lang> Language::languages = QList<Lang>(
     {
         {
             "Arabic",
-             "ara",
-             "https://dl.dropboxusercontent.com/s/7qujorvi4op3tej/ara.traineddata"
+            "ara",
+            "ar",
+            "https://dl.dropboxusercontent.com/s/7qujorvi4op3tej/ara.traineddata"
         },
         {
             "English",
-             "eng",
-             "https://dl.dropboxusercontent.com/s/r5qmsfonx7mluc4/eng.traineddata"
+            "eng",
+            "en",
+            "https://dl.dropboxusercontent.com/s/r5qmsfonx7mluc4/eng.traineddata"
         },
         {
             "French",
-             "fra",
-             "https://dl.dropboxusercontent.com/s/ak8pnk2eup3w6e7/fra.traineddata"
+            "fra",
+            "fr",
+            "https://dl.dropboxusercontent.com/s/ak8pnk2eup3w6e7/fra.traineddata"
         },
         {
             "German",
-             "deu",
-             "https://dl.dropboxusercontent.com/s/l3083m8285ouhtr/deu.traineddata"
+            "deu",
+            "de",
+            "https://dl.dropboxusercontent.com/s/l3083m8285ouhtr/deu.traineddata"
         },
         {
             "Italian",
-             "ita",
-             "https://dl.dropboxusercontent.com/s/opr15y55o01cm4b/ita.traineddata"
+            "ita",
+            "it",
+            "https://dl.dropboxusercontent.com/s/opr15y55o01cm4b/ita.traineddata"
         },
         {
             "Japanese",
-             "jpn",
-             "https://dl.dropboxusercontent.com/s/orsqcy09ohnd8ry/jpn.traineddata"
+            "jpn",
+            "ja",
+            "https://dl.dropboxusercontent.com/s/orsqcy09ohnd8ry/jpn.traineddata"
         },
         {
             "Korean",
-             "kor",
-             "https://dl.dropboxusercontent.com/s/rkg0vev3jzcgdur/kor.traineddata"
+            "kor",
+            "ko",
+            "https://dl.dropboxusercontent.com/s/rkg0vev3jzcgdur/kor.traineddata"
         },
         {
             "Portuguese",
-             "por",
-             "https://dl.dropboxusercontent.com/s/tmoion1c26qbx6b/por.traineddata"
+            "por",
+            "pt",
+            "https://dl.dropboxusercontent.com/s/tmoion1c26qbx6b/por.traineddata"
         },
         {
             "Russian",
-             "rus",
-             "https://dl.dropboxusercontent.com/s/tmoion1c26qbx6b/rus.traineddata"
+            "rus",
+            "ru",
+            "https://dl.dropboxusercontent.com/s/tmoion1c26qbx6b/rus.traineddata"
         },
         {
             "Spanish",
             "spa",
-             "https://dl.dropboxusercontent.com/s/pba3sen7o8e3nhf/spa.traineddata"
+            "es",
+            "https://dl.dropboxusercontent.com/s/pba3sen7o8e3nhf/spa.traineddata"
         },
         {
             "Ukrainian",
-             "ukr",
-             "https://dl.dropboxusercontent.com/s/17at42rlq50cy1z/ukr.traineddata"
+            "ukr",
+            "uk",
+            "https://dl.dropboxusercontent.com/s/17at42rlq50cy1z/ukr.traineddata"
         },
     }
 );
-
