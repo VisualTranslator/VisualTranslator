@@ -24,7 +24,7 @@ public:
     static bool isDownloaded(QString name);
 
 private:
-    static Lang getLang(QString name);
+    static Lang find(QString name);
 };
 
 #endif // LANGUAGE_H

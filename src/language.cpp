@@ -5,7 +5,7 @@ Language::Language(QObject *parent) : QObject(parent)
 
 }
 
-Lang Language::getLang(QString name) {
+Lang Language::find(QString name) {
     foreach (Lang language, Language::languages) {
         if (language.name == name) return language;
     }
@@ -16,22 +16,22 @@ Lang Language::getLang(QString name) {
 
 QString Language::getUrl(QString name)
 {
-    return Language::getLang(name).url;
+    return Language::find(name).url;
 }
 
 QString Language::getFileName(QString name)
 {
-    return Language::getLang(name).shortName + ".traineddata";
+    return Language::find(name).shortName + ".traineddata";
 }
 
 QString Language::getShortName(QString name)
 {
-    return Language::getLang(name).shortName;
+    return Language::find(name).shortName;
 }
 
 QString Language::getGoogleName(QString name)
 {
-    return Language::getLang(name).googleName;
+    return Language::find(name).googleName;
 }
 
 bool Language::isDownloaded(QString name)
