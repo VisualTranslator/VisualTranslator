@@ -5,40 +5,33 @@ Language::Language(QObject *parent) : QObject(parent)
 
 }
 
-QString Language::getUrl(QString name)
-{
+Lang Language::getLang(QString name) {
     foreach (Lang language, Language::languages) {
-        if (language.name == name) return language.url;
+        if (language.name == name) return language;
     }
 
-    return "";
+    // return the default language (English) with id 1
+    return Language::languages[1];
+}
+
+QString Language::getUrl(QString name)
+{
+    return Language::getLang(name).url;
 }
 
 QString Language::getFileName(QString name)
 {
-    foreach (Lang language, Language::languages) {
-        if (language.name == name) return language.shortName + ".traineddata";
-    }
-
-    return "";
+    return Language::getLang(name).shortName + ".traineddata";
 }
 
 QString Language::getShortName(QString name)
 {
-    foreach (Lang language, Language::languages) {
-        if (language.name == name) return language.shortName;
-    }
-
-    return "";
+    return Language::getLang(name).shortName;
 }
 
 QString Language::getGoogleName(QString name)
 {
-    foreach (Lang language, Language::languages) {
-        if (language.name == name) return language.googleName;
-    }
-
-    return "";
+    return Language::getLang(name).googleName;
 }
 
 bool Language::isDownloaded(QString name)
