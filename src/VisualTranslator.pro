@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     settingsform.cpp \
     downloadlanguageform.cpp \
     downloadlanguageitem.cpp \
-    networkfiledownloader.cpp
+    networkfiledownloader.cpp \
+    language.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -35,7 +36,8 @@ HEADERS  += \
     settingsform.h \
     downloadlanguageform.h \
     downloadlanguageitem.h \
-    networkfiledownloader.h
+    networkfiledownloader.h \
+    language.h
 
 FORMS    += \
     settingsform.ui \
