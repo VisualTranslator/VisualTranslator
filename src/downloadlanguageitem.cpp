@@ -47,5 +47,9 @@ void DownloadLanguageItem::removeButtonClicked()
     QString fileName = Language::getFileName(name);
     QDir tessdataFolder(qApp->applicationDirPath() + "/tessdata");
 
-    tessdataFolder.remove(fileName);
+    bool isRemoved = tessdataFolder.remove(fileName);
+
+    if (isRemoved) {
+        ui->pushButton->setText("Download");
+    }
 }
