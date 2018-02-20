@@ -20,28 +20,8 @@ void NetworkFileDownloader::download(QString url)
     file->setFileName(saveFilePath);
     file->open(QIODevice::WriteOnly);
 
-    connect(manager,SIGNAL(finished(QNetworkReply*)),this, SLOT(onFinished(QNetworkReply*)));
     connect(reply,SIGNAL(readyRead()),this, SLOT(onReadyRead()));
     connect(reply,SIGNAL(finished()), this, SLOT(onReplyFinished()));
-}
-
-void NetworkFileDownloader::onFinished(QNetworkReply * reply)
-{
-    switch(reply->error())
-    {
-        case QNetworkReply::NoError:
-            qDebug("file is downloaded successfully.");
-            break;
-
-        default:
-            qDebug(reply->errorString().toLatin1());
-    }
-
-    if(file->isOpen())
-    {
-        file->close();
-        file->deleteLater();
-    }
 }
 
 void NetworkFileDownloader::onReadyRead()

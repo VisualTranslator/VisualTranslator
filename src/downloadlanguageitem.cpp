@@ -39,7 +39,8 @@ void DownloadLanguageItem::downloadButtonClicked()
     networkFileDownloader->download(url);
 
     emit downloadStart();
-    connect(networkFileDownloader->reply,SIGNAL(downloadProgress(qint64,qint64)),this, SIGNAL(downloadProgress(qint64, qint64)));
+    connect(networkFileDownloader->reply, SIGNAL(downloadProgress(qint64,qint64)), this, SIGNAL(downloadProgress(qint64, qint64)));
+    connect(networkFileDownloader->manager, SIGNAL(finished(QNetworkReply*)), this, SIGNAL(downloadFinished(QNetworkReply*)));
 }
 
 void DownloadLanguageItem::removeButtonClicked()
