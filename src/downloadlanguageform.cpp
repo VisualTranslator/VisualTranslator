@@ -43,7 +43,8 @@ void DownloadLanguageForm::closeEvent(QCloseEvent *event)
 
 void DownloadLanguageForm::addLanguage(QString name, QString iconPath, bool isDownloaded)
 {
-    DownloadLanguageItem *downloadLanguageItem = new DownloadLanguageItem(name, iconPath);
+    DownloadLanguageItem *downloadLanguageItem = new DownloadLanguageItem(name, iconPath, isDownloaded);
+
     connect(downloadLanguageItem, SIGNAL(downloadStart()), this, SLOT(downloadStart()));
     connect(downloadLanguageItem, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(onDownloadProgress(qint64,qint64)));
 

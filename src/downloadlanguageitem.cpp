@@ -2,12 +2,16 @@
 #include "downloadlanguageitem.h"
 #include "ui_downloadlanguageitem.h"
 
-DownloadLanguageItem::DownloadLanguageItem(QString name, QString iconPath, QWidget *parent) :
+DownloadLanguageItem::DownloadLanguageItem(QString name, QString iconPath, bool isDownloaded, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DownloadLanguageItem)
 {
     this->name = name;
     ui->setupUi(this);
+
+    if (isDownloaded) {
+        ui->pushButton->setText("Remove");
+    }
 
     ui->label->setText(name);
     ui->langIcon->setPixmap(QPixmap::fromImage(QImage(iconPath)));
@@ -19,6 +23,15 @@ DownloadLanguageItem::~DownloadLanguageItem()
 }
 
 void DownloadLanguageItem::on_pushButton_clicked()
+{
+    if (ui->pushButton->text() == "Download") {
+        downloadButtonClicked();
+    } else if (ui->pushButton->text() == "Remove") {
+        removeButtonClicked();
+    }
+}
+
+void DownloadLanguageItem::downloadButtonClicked()
 {
     QString url;
 
@@ -73,3 +86,55 @@ void DownloadLanguageItem::on_pushButton_clicked()
     connect(networkFileDownloader->reply,SIGNAL(downloadProgress(qint64,qint64)),this, SIGNAL(downloadProgress(qint64, qint64)));
 }
 
+void DownloadLanguageItem::removeButtonClicked()
+{
+    QDir tessdataFolder(qApp->applicationDirPath() + "/tessdata");
+
+    QString fileName;
+
+    if (name == "Arabic") {
+        fileName = "ara.traineddata";
+    }
+
+    if (name == "English") {
+        fileName = "eng.traineddata";
+    }
+
+    if (name == "French") {
+        fileName = "fra.traineddata";
+    }
+
+    if (name == "German") {
+        fileName = "deu.traineddata";
+    }
+
+    if (name == "Italian") {
+        fileName = "ita.traineddata";
+    }
+
+    if (name == "Japanese") {
+        fileName = "jpn.traineddata";
+    }
+
+    if (name == "Korean") {
+        fileName = "kor.traineddata";
+    }
+
+    if (name == "Portuguese") {
+        fileName = "por.traineddata";
+    }
+
+    if (name == "Russian") {
+        fileName = "rus.traineddata";
+    }
+
+    if (name == "Spanish") {
+        fileName = "spa.traineddata";
+    }
+
+    if (name == "Ukrainian") {
+        fileName = "ukr.traineddata";
+    }
+
+    tessdataFolder.remove(fileName);
+}
