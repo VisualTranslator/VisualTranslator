@@ -25,11 +25,11 @@ void Tray::generateMenu()
     addLangMenuItem("from", "Arabic", QVariant("ar"), QIcon(":/resources/lang_icons/sa.png"), tessFiles.contains("ara.traineddata"));
     addLangMenuItem("from", "English", QVariant("en"), QIcon(":/resources/lang_icons/us.png"), tessFiles.contains("eng.traineddata"));
     addLangMenuItem("from", "French", QVariant("fr"), QIcon(":/resources/lang_icons/fr.png"), tessFiles.contains("fra.traineddata"));
-    addLangMenuItem("from", "German", QVariant("de"), QIcon(":/resources/lang_icons/de.png"), tessFiles.contains("fra.traineddata"));
+    addLangMenuItem("from", "German", QVariant("de"), QIcon(":/resources/lang_icons/de.png"), tessFiles.contains("deu.traineddata"));
     addLangMenuItem("from", "Italian", QVariant("it"), QIcon(":/resources/lang_icons/it.png"), tessFiles.contains("ita.traineddata"));
-    addLangMenuItem("from", "Japanese", QVariant("ja"), QIcon(":/resources/lang_icons/jp.png"), tessFiles.contains(("jpn.traineddata")));
-    addLangMenuItem("from", "Korean", QVariant("ko"), QIcon(":/resources/lang_icons/kr.png"), tessFiles.contains(("kor.traineddata")));
-    addLangMenuItem("from", "Portuguese", QVariant("pt"), QIcon(":/resources/lang_icons/pt.png"), tessFiles.contains(("por.traineddata")));
+    addLangMenuItem("from", "Japanese", QVariant("ja"), QIcon(":/resources/lang_icons/jp.png"), tessFiles.contains("jpn.traineddata"));
+    addLangMenuItem("from", "Korean", QVariant("ko"), QIcon(":/resources/lang_icons/kr.png"), tessFiles.contains("kor.traineddata"));
+    addLangMenuItem("from", "Portuguese", QVariant("pt"), QIcon(":/resources/lang_icons/pt.png"), tessFiles.contains("por.traineddata"));
     addLangMenuItem("from", "Russian", QVariant("ru"), QIcon(":/resources/lang_icons/ru.png"), tessFiles.contains("rus.traineddata"));
     addLangMenuItem("from", "Spanish", QVariant("es"), QIcon(":/resources/lang_icons/es.png"), tessFiles.contains("spa.traineddata"));
     addLangMenuItem("from", "Ukrainian", QVariant("uk"), QIcon(":/resources/lang_icons/ua.png"), tessFiles.contains("ukr.traineddata"));
