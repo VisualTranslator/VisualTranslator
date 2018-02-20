@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "downloadlanguageitem.h"
+#include <language.h>
 
 namespace Ui {
 class DownloadLanguageForm;

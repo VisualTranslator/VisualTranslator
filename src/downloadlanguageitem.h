@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <networkfiledownloader.h>
+#include <language.h>
 
 namespace Ui {
 class DownloadLanguageItem;
