@@ -1,5 +1,6 @@
 #include "downloadlanguageform.h"
 #include "ui_downloadlanguageform.h"
+#include "ui_downloadlanguageitem.h"
 
 DownloadLanguageForm::DownloadLanguageForm(QWidget *parent) :
     QWidget(parent),
@@ -45,6 +46,12 @@ void DownloadLanguageForm::addLanguage(QString name, QString iconPath, bool isDo
 
 void DownloadLanguageForm::downloadStart()
 {
+    for(int i = 0; i < ui->listWidget->count(); ++i)
+    {
+        DownloadLanguageItem *widget = qobject_cast<DownloadLanguageItem *>(ui->listWidget->itemWidget(ui->listWidget->item(i)));
+        widget->ui->pushButton->setEnabled(false);
+    }
+
     ui->progressBar->reset();
     ui->progressBar->setFormat("Downloaded: %p%");
 }
