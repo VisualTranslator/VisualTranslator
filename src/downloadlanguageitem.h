@@ -2,8 +2,9 @@
 #define DOWNLOADLANGUAGEITEM_H
 
 #include <QWidget>
-#include <networkfiledownloader.h>
 #include <language.h>
+#include <networkfiledownloader.h>
+#include "ui_downloadlanguageitem.h"
 
 namespace Ui {
 class DownloadLanguageItem;

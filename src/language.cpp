@@ -1,5 +1,4 @@
 #include "language.h"
-#include <QDebug>
 
 Language::Language(QObject *parent) : QObject(parent)
 {

@@ -7,7 +7,6 @@ NetworkFileDownloader::NetworkFileDownloader(QObject *parent) : QObject(parent)
 
 void NetworkFileDownloader::download(QString url)
 {
-    qDebug() << QSslSocket::supportsSsl();
     QStringList filePathList = url.split('/');
     QString fileName = filePathList.at(filePathList.count() - 1);
     QString saveFilePath = QString(qApp->applicationDirPath() + "/tessdata/" + fileName);

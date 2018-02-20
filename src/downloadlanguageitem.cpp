@@ -1,6 +1,4 @@
-#include <QDebug>
 #include "downloadlanguageitem.h"
-#include "ui_downloadlanguageitem.h"
 
 DownloadLanguageItem::DownloadLanguageItem(QString name, QString iconPath, bool isDownloaded, QWidget *parent) :
     QWidget(parent),

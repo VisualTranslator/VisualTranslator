@@ -1,6 +1,4 @@
 #include "downloadlanguageform.h"
-#include "ui_downloadlanguageform.h"
-#include "ui_downloadlanguageitem.h"
 
 DownloadLanguageForm::DownloadLanguageForm(QWidget *parent) :
     QWidget(parent),

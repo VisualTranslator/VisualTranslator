@@ -1,8 +1,4 @@
 #include "settingsform.h"
-#include "ui_settingsform.h"
-#include "app.h"
-
-#include <QtWidgets>
 
 SettingsForm::SettingsForm(QWidget *parent) :
     QWidget(parent),

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "downloadlanguageitem.h"
 #include <language.h>
+#include "ui_downloadlanguageform.h"
+#include "ui_downloadlanguageitem.h"
 
 namespace Ui {
 class DownloadLanguageForm;
