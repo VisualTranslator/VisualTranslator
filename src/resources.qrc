@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>resources/lang_icons/ua.png</file>
+        <file>resources/lang_icons/ukr.png</file>
         <file>resources/tray.png</file>
-        <file>resources/lang_icons/sa.png</file>
-        <file>resources/lang_icons/us.png</file>
-        <file>resources/lang_icons/fr.png</file>
-        <file>resources/lang_icons/de.png</file>
-        <file>resources/lang_icons/es.png</file>
-        <file>resources/lang_icons/it.png</file>
-        <file>resources/lang_icons/jp.png</file>
-        <file>resources/lang_icons/kr.png</file>
-        <file>resources/lang_icons/pt.png</file>
-        <file>resources/lang_icons/ru.png</file>
+        <file>resources/lang_icons/eng.png</file>
+        <file>resources/lang_icons/fra.png</file>
+        <file>resources/lang_icons/deu.png</file>
+        <file>resources/lang_icons/spa.png</file>
+        <file>resources/lang_icons/ita.png</file>
+        <file>resources/lang_icons/jpn.png</file>
+        <file>resources/lang_icons/kor.png</file>
+        <file>resources/lang_icons/por.png</file>
+        <file>resources/lang_icons/rus.png</file>
         <file>resources/cursor.png</file>
         <file>resources/stylesheet.qss</file>
+        <file>resources/lang_icons/ara.png</file>
     </qresource>
 </RCC>
