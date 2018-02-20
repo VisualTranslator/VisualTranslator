@@ -24,7 +24,7 @@ public slots:
 
 private:
     Ui::DownloadLanguageForm *ui;
-    void addLanguage(QString name, QString iconPath);
+    void addLanguage(QString name, QString iconPath, bool isDownloaded);
 };
 
 #endif // DOWNLOADLANGUAGEFORM_H
