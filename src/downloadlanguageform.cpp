@@ -8,21 +8,18 @@ DownloadLanguageForm::DownloadLanguageForm(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QDir tessdataFolder(qApp->applicationDirPath() + "/tessdata");
-    QStringList tessFiles = tessdataFolder.entryList();
-
     // TODO rewrite to store list of all languages (with their options) as global settings
-    addLanguage("Arabic", ":/resources/lang_icons/sa.png", tessFiles.contains("ara.traineddata"));
-    addLanguage("English", ":/resources/lang_icons/us.png", tessFiles.contains("eng.traineddata"));
-    addLanguage("French", ":/resources/lang_icons/fr.png", tessFiles.contains("fra.traineddata"));
-    addLanguage("German", ":/resources/lang_icons/de.png", tessFiles.contains("deu.traineddata"));
-    addLanguage("Italian", ":/resources/lang_icons/it.png", tessFiles.contains("ita.traineddata"));
-    addLanguage("Japanese", ":/resources/lang_icons/jp.png", tessFiles.contains("jpn.traineddata"));
-    addLanguage("Korean", ":/resources/lang_icons/kr.png", tessFiles.contains("kor.traineddata"));
-    addLanguage("Portuguese", ":/resources/lang_icons/pt.png", tessFiles.contains("por.traineddata"));
-    addLanguage("Russian", ":/resources/lang_icons/ru.png", tessFiles.contains("rus.traineddata"));
-    addLanguage("Spanish", ":/resources/lang_icons/es.png", tessFiles.contains("spa.traineddata"));
-    addLanguage("Ukrainian", ":/resources/lang_icons/ua.png", tessFiles.contains("ukr.traineddata"));
+    addLanguage("Arabic", ":/resources/lang_icons/sa.png");
+    addLanguage("English", ":/resources/lang_icons/us.png");
+    addLanguage("French", ":/resources/lang_icons/fr.png");
+    addLanguage("German", ":/resources/lang_icons/de.png");
+    addLanguage("Italian", ":/resources/lang_icons/it.png");
+    addLanguage("Japanese", ":/resources/lang_icons/jp.png");
+    addLanguage("Korean", ":/resources/lang_icons/kr.png");
+    addLanguage("Portuguese", ":/resources/lang_icons/pt.png");
+    addLanguage("Russian", ":/resources/lang_icons/ru.png");
+    addLanguage("Spanish", ":/resources/lang_icons/es.png");
+    addLanguage("Ukrainian", ":/resources/lang_icons/ua.png");
 }
 
 DownloadLanguageForm::~DownloadLanguageForm()
@@ -41,7 +38,7 @@ void DownloadLanguageForm::closeEvent(QCloseEvent *event)
     this->hide();
 }
 
-void DownloadLanguageForm::addLanguage(QString name, QString iconPath, bool isDownloaded)
+void DownloadLanguageForm::addLanguage(QString name, QString iconPath)
 {
     DownloadLanguageItem *downloadLanguageItem = new DownloadLanguageItem(name, iconPath);
     connect(downloadLanguageItem, SIGNAL(downloadStart()), this, SLOT(downloadStart()));
