@@ -83,7 +83,7 @@ void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon ic
     }
 }
 
-void Tray::showMenu(QSystemTrayIcon::ActivationReason r)
+void Tray::showMenu()
 {
     trayIcon->contextMenu()->exec(QCursor::pos());
 }

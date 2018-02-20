@@ -24,7 +24,7 @@ public slots:
     virtual void closeEvent(QCloseEvent *event);
     void downloadStart();
     void onDownloadProgress(qint64 bytesRead, qint64 bytesTotal);
-    void onDownloadFinished(QNetworkReply*reply);
+    void onDownloadFinished();
 
 private:
     Ui::DownloadLanguageForm *ui;

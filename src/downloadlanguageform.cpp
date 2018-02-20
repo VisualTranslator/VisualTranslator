@@ -58,7 +58,7 @@ void DownloadLanguageForm::onDownloadProgress(qint64 bytesRead,qint64 bytesTotal
     ui->progressBar->setValue(static_cast<int>(100.0 * bytesRead / bytesTotal));
 }
 
-void DownloadLanguageForm::onDownloadFinished(QNetworkReply *reply) {
+void DownloadLanguageForm::onDownloadFinished() {
     for(int i = 0; i < ui->listWidget->count(); ++i)
     {
         DownloadLanguageItem *widget = qobject_cast<DownloadLanguageItem *>(ui->listWidget->itemWidget(ui->listWidget->item(i)));
