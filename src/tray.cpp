@@ -45,16 +45,15 @@ void Tray::generateMenu()
 
 void Tray::showMessage(const QString &message)
 {
-    translationResultForm->ui->textEdit->setDocument(new QTextDocument(message));
-    translationResultForm->ui->textEdit->setFixedHeight(translationResultForm->ui->textEdit->document()->size().height());
-    translationResultForm->ui->textEdit->zoomIn(2);
-    translationResultForm->setFixedHeight(translationResultForm->ui->textEdit->document()->size().height());
+    translationResultForm->ui->textEdit->setText(message);
 
+    // search for the correct position for the translationResultForm
     int screenWidth = QApplication::desktop()->screenGeometry().width();
     int screenHeight = QApplication::desktop()->screenGeometry().height();
     QRect trayIconGeometry = trayIcon->geometry();
     QPoint formPosition = QPoint(trayIconGeometry.x(), trayIconGeometry.y());
 
+    // TODO check with non-default dock position (left, right, top)
     if (formPosition.x() + translationResultForm->width() > screenWidth - 100) {
         formPosition.setX(screenWidth - translationResultForm->width());
     }
