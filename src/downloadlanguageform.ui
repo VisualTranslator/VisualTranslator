@@ -20,8 +20,9 @@
    <string>Language manager</string>
   </property>
   <property name="windowIcon">
-   <iconset theme=":/resources/tray.png">
-    <normaloff>.</normaloff>.</iconset>
+   <iconset>
+    <normaloff>resources/tray.png</normaloff>
+    <normalon>:/resources/tray.png</normalon>resources/tray.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
