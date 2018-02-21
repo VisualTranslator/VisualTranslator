@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     downloadlanguageform.cpp \
     downloadlanguageitem.cpp \
     networkfiledownloader.cpp \
-    language.cpp
+    language.cpp \
+    translationresultform.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -37,12 +38,14 @@ HEADERS  += \
     downloadlanguageform.h \
     downloadlanguageitem.h \
     networkfiledownloader.h \
-    language.h
+    language.h \
+    translationresultform.h
 
 FORMS    += \
     settingsform.ui \
     downloadlanguageform.ui \
-    downloadlanguageitem.ui
+    downloadlanguageitem.ui \
+    translationresultform.ui
 include(qhotkey.pri)
 
 

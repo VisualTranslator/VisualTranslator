@@ -6,7 +6,10 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     trayIcon->setToolTip(QString("Visual Translator"));
     settingsForm = new SettingsForm(parent);
     downloadLanguagesForm = new DownloadLanguageForm(parent);
+    translationResultForm = new TranslationResultForm(parent);
+    translationResultForm->setWindowFlag(Qt::Popup);
     trayIcon->show();
+
     generateMenu();
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
 }
@@ -42,8 +45,26 @@ void Tray::generateMenu()
 
 void Tray::showMessage(const QString &message)
 {
-    // TODO fix issue with the visible message limit
-    trayIcon->showMessage(QString("VisualTranslator"), message);
+    translationResultForm->ui->textEdit->setDocument(new QTextDocument(message));
+    translationResultForm->ui->textEdit->setFixedHeight(translationResultForm->ui->textEdit->document()->size().height());
+    translationResultForm->ui->textEdit->zoomIn(2);
+    translationResultForm->setFixedHeight(translationResultForm->ui->textEdit->document()->size().height());
+
+    int screenWidth = QApplication::desktop()->screenGeometry().width();
+    int screenHeight = QApplication::desktop()->screenGeometry().height();
+    QRect trayIconGeometry = trayIcon->geometry();
+    QPoint formPosition = QPoint(trayIconGeometry.x(), trayIconGeometry.y());
+
+    if (formPosition.x() + translationResultForm->width() > screenWidth - 100) {
+        formPosition.setX(screenWidth - translationResultForm->width());
+    }
+
+    if (formPosition.y() + translationResultForm->height() > screenHeight - 100) {
+        formPosition.setY(screenHeight - translationResultForm->height() - trayIconGeometry.height());
+    }
+
+    translationResultForm->move(formPosition);
+    translationResultForm->show();
 }
 
 void Tray::chooseFromLang()

@@ -5,6 +5,8 @@
 #include "app.h"
 #include "settingsform.h"
 #include "downloadlanguageform.h"
+#include <translationresultform.h>
+#include <ui_translationresultform.h>
 
 class Tray : public QWidget
 {
@@ -20,6 +22,7 @@ private:
     QMenu *langFromMenu;
     SettingsForm *settingsForm;
     DownloadLanguageForm *downloadLanguagesForm;
+    TranslationResultForm *translationResultForm;
 public:
     explicit Tray(QWidget *parent = 0);
 signals:
