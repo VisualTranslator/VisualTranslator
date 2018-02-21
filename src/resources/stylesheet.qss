@@ -28,3 +28,7 @@ QMenu::separator {
 QMenu::icon {
     margin-left: 15px;
 }
+
+QTextEdit {
+    border: 1px solid #a0a0a0;
+}
