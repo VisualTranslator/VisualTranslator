@@ -14,5 +14,6 @@
         <file>resources/cursor.png</file>
         <file>resources/stylesheet.qss</file>
         <file>resources/lang_icons/ara.png</file>
+        <file>resources/fonts/OpenSans-Regular.ttf</file>
     </qresource>
 </RCC>
