@@ -7,33 +7,50 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>119</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Settings</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/resources/tray.png</normaloff>
+    <normalon>:/resources/tray.png</normalon>:/resources/tray.png</iconset>
   </property>
   <widget class="QCheckBox" name="checkBox">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>70</y>
-     <width>70</width>
+     <x>10</x>
+     <y>10</y>
+     <width>281</width>
      <height>17</height>
     </rect>
    </property>
    <property name="text">
-    <string>Auto-run</string>
+    <string>Automatically Launch a Program at Startup</string>
    </property>
   </widget>
   <widget class="QPushButton" name="btnSaveChanges">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>250</y>
-     <width>75</width>
-     <height>23</height>
+     <x>189</x>
+     <y>80</y>
+     <width>121</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
    </property>
    <property name="text">
     <string>Save changes</string>
@@ -42,17 +59,48 @@
   <widget class="QPushButton" name="btnCancel">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>250</y>
+     <x>320</x>
+     <y>80</y>
      <width>75</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Cancel</string>
    </property>
   </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>CTRL + ALT + Q</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>40</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Key combination</string>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

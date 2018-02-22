@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 
     QFontDatabase::addApplicationFont(":/resources/fonts/OpenSans-Regular.ttf");
     QFont OpenSans("OpenSans", 10, QFont::Normal);
+
     a.setFont(OpenSans);
 
     return a.exec();
