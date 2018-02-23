@@ -11,6 +11,7 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     settingsForm = new SettingsForm(parent);
     downloadLanguagesForm = new DownloadLanguageForm(parent);
     connect(downloadLanguagesForm, SIGNAL(languageAdded(QString)), this, SLOT(languageAdded(QString)));
+    connect(downloadLanguagesForm, SIGNAL(languageRemoved(QString)), this, SLOT(languageRemoved(QString)));
     translationResultForm = new TranslationResultForm(parent);
     translationResultForm->setWindowFlag(Qt::Popup);
 
@@ -112,6 +113,17 @@ void Tray::addLanguageToMenu(QString type, QString name)
     }
 }
 
+void Tray::removeLanguageFromMenu(QString name)
+{
+    foreach (QAction* a, langFromMenu->actions())
+    {
+        if (a->data().toString() == name) {
+            langFromMenu->removeAction(a);
+            break;
+        }
+    }
+}
+
 void Tray::showMenu()
 {
     trayIcon->contextMenu()->exec(QCursor::pos());
@@ -120,4 +132,9 @@ void Tray::showMenu()
 void Tray::languageAdded(QString name)
 {
     addLanguageToMenu("from", name);
+}
+
+void Tray::languageRemoved(QString name)
+{
+    removeLanguageFromMenu(name);
 }

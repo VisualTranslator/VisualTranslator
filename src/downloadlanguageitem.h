@@ -29,6 +29,7 @@ private:
 
 signals:
     void downloadStart(QString name);
+    void languageRemoved(QString name);
 };
 
 #endif // DOWNLOADLANGUAGEITEM_H

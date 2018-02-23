@@ -45,4 +45,6 @@ void DownloadLanguageItem::removeButtonClicked()
     if (isRemoved) {
         ui->pushButton->setText("Download");
     }
+
+    emit languageRemoved(name);
 }

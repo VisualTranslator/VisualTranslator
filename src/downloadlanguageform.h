@@ -34,6 +34,7 @@ private:
 
 signals:
     void languageAdded(QString name);
+    void languageRemoved(QString name);
 };
 
 #endif // DOWNLOADLANGUAGEFORM_H

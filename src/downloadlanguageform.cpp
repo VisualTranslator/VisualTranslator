@@ -38,6 +38,7 @@ void DownloadLanguageForm::addLanguage(QString name, QString iconPath, bool isDo
 {
     DownloadLanguageItem *downloadLanguageItem = new DownloadLanguageItem(name, iconPath, isDownloaded);
     connect(downloadLanguageItem, SIGNAL(downloadStart(QString)), this, SLOT(downloadStart(QString)));
+    connect(downloadLanguageItem, SIGNAL(languageRemoved(QString)), this, SIGNAL(languageRemoved(QString)));
 
     QListWidgetItem *listItem = new QListWidgetItem(ui->listWidget);
 
