@@ -22,6 +22,7 @@ DownloadLanguageItem::~DownloadLanguageItem()
 
 void DownloadLanguageItem::on_pushButton_clicked()
 {
+    // TODO find an alternative way to identify different types of buttons, not by `text()`
     if (ui->pushButton->text() == "Download") {
         downloadButtonClicked();
     } else if (ui->pushButton->text() == "Remove") {
@@ -31,14 +32,7 @@ void DownloadLanguageItem::on_pushButton_clicked()
 
 void DownloadLanguageItem::downloadButtonClicked()
 {
-    QString url = Language::getUrl(name);
-    NetworkFileDownloader *networkFileDownloader = new NetworkFileDownloader();
-
-    networkFileDownloader->download(url);
-
-    emit downloadStart();
-    connect(networkFileDownloader->reply, SIGNAL(downloadProgress(qint64,qint64)), this, SIGNAL(downloadProgress(qint64, qint64)));
-    connect(networkFileDownloader->manager, SIGNAL(finished(QNetworkReply*)), this, SIGNAL(downloadFinished(QNetworkReply*)));
+    emit downloadStart(name);
 }
 
 void DownloadLanguageItem::removeButtonClicked()

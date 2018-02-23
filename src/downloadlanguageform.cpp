@@ -5,6 +5,10 @@ DownloadLanguageForm::DownloadLanguageForm(QWidget *parent) :
     ui(new Ui::DownloadLanguageForm)
 {
     ui->setupUi(this);
+    networkFileDownloader = new NetworkFileDownloader();
+
+    connect(networkFileDownloader, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(onDownloadProgress(qint64,qint64)));
+    connect(networkFileDownloader, SIGNAL(downloadFinished(QNetworkReply*,QString)), this, SLOT(onDownloadFinished(QNetworkReply*, QString)));
 
     foreach (Lang language, Language::languages) {
         addLanguage(language.name, ":/resources/lang_icons/" + language.shortName + ".png", Language::isDownloaded(language.name));
@@ -30,9 +34,7 @@ void DownloadLanguageForm::closeEvent(QCloseEvent *event)
 void DownloadLanguageForm::addLanguage(QString name, QString iconPath, bool isDownloaded)
 {
     DownloadLanguageItem *downloadLanguageItem = new DownloadLanguageItem(name, iconPath, isDownloaded);
-    connect(downloadLanguageItem, SIGNAL(downloadStart()), this, SLOT(downloadStart()));
-    connect(downloadLanguageItem, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(onDownloadProgress(qint64,qint64)));
-    connect(downloadLanguageItem, SIGNAL(downloadFinished(QNetworkReply*)), this, SLOT(onDownloadFinished()));
+    connect(downloadLanguageItem, SIGNAL(downloadStart(QString)), this, SLOT(downloadStart(QString)));
 
     QListWidgetItem *listItem = new QListWidgetItem(ui->listWidget);
 
@@ -42,8 +44,10 @@ void DownloadLanguageForm::addLanguage(QString name, QString iconPath, bool isDo
     listItem->setSizeHint(QSize(downloadLanguageItem->width(),downloadLanguageItem->height()));
 }
 
-void DownloadLanguageForm::downloadStart()
+void DownloadLanguageForm::downloadStart(QString name)
 {
+    networkFileDownloader->download(Language::getUrl(name));
+
     for(int i = 0; i < ui->listWidget->count(); ++i)
     {
         DownloadLanguageItem *widget = qobject_cast<DownloadLanguageItem *>(ui->listWidget->itemWidget(ui->listWidget->item(i)));
@@ -51,14 +55,14 @@ void DownloadLanguageForm::downloadStart()
     }
 
     ui->progressBar->reset();
-    ui->progressBar->setFormat("Downloaded: %p%");
 }
 
 void DownloadLanguageForm::onDownloadProgress(qint64 bytesRead,qint64 bytesTotal) {
     ui->progressBar->setValue(static_cast<int>(100.0 * bytesRead / bytesTotal));
 }
 
-void DownloadLanguageForm::onDownloadFinished() {
+void DownloadLanguageForm::onDownloadFinished(QNetworkReply *reply, QString name) {
+    // Update the button labels for every DownloadLanguageItem
     for(int i = 0; i < ui->listWidget->count(); ++i)
     {
         DownloadLanguageItem *widget = qobject_cast<DownloadLanguageItem *>(ui->listWidget->itemWidget(ui->listWidget->item(i)));

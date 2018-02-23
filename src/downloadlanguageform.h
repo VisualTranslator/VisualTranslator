@@ -17,14 +17,15 @@ class DownloadLanguageForm : public QWidget
 
 public:
     explicit DownloadLanguageForm(QWidget *parent = 0);
+    NetworkFileDownloader *networkFileDownloader;
     ~DownloadLanguageForm();
 
 public slots:
     void showForm();
     virtual void closeEvent(QCloseEvent *event);
-    void downloadStart();
+    void downloadStart(QString name);
     void onDownloadProgress(qint64 bytesRead, qint64 bytesTotal);
-    void onDownloadFinished();
+    void onDownloadFinished(QNetworkReply *reply, QString name);
 
 private:
     Ui::DownloadLanguageForm *ui;

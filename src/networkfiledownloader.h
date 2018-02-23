@@ -18,15 +18,20 @@ public:
 
 private:
     QFile *file;
+    QString url;
     bool isDownloading;
 
 signals:
+    void downloadFinished(QNetworkReply*, QString);
+    void downloadProgress(qint64 bytesRead, qint64 bytesTotal);
 
 public slots:
 
 private slots:
     void onReadyRead();
     void onReplyFinished();
+    void onDownloadFinished(QNetworkReply *reply);
+    void onDownloadProgress(qint64 bytesRead, qint64 bytesTotal);
 };
 
 #endif // NETWORKFILEDOWNLOADER_H

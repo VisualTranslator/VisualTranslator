@@ -28,9 +28,7 @@ private:
     void removeButtonClicked();
 
 signals:
-    void downloadStart();
-    void downloadFinished(QNetworkReply*);
-    void downloadProgress(qint64 bytesRead, qint64 bytesTotal);
+    void downloadStart(QString name);
 };
 
 #endif // DOWNLOADLANGUAGEITEM_H
