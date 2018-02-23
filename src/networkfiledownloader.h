@@ -13,13 +13,14 @@ class NetworkFileDownloader : public QObject
 public:
     explicit NetworkFileDownloader(QObject *parent = nullptr);
     void download(QString url);
-    QNetworkAccessManager *manager;
     QNetworkReply *reply;
 
 private:
     QFile *file;
     QString url;
     bool isDownloading;
+    QNetworkAccessManager *manager;
+    QNetworkRequest *request;
 
 signals:
     void downloadFinished(QNetworkReply*, QString);
