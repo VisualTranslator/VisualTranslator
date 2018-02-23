@@ -14,6 +14,16 @@ Lang Language::find(QString name) {
     return Language::languages[1];
 }
 
+QString Language::getNameByUrl(QString url)
+{
+    foreach (Lang language, Language::languages) {
+        if (language.url == url) return language.name;
+    }
+
+    // return the default language name
+    return "English";
+}
+
 QString Language::getUrl(QString name)
 {
     return Language::find(name).url;
