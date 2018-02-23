@@ -2,42 +2,43 @@
 
 Tray::Tray(QWidget *parent) : QWidget(parent)
 {
+    // Setup the tray icon
     trayIcon = new QSystemTrayIcon(QIcon(":/resources/tray.png"));
     trayIcon->setToolTip(QString("Visual Translator"));
-    settingsForm = new SettingsForm(parent);
-    downloadLanguagesForm = new DownloadLanguageForm(parent);
-    translationResultForm = new TranslationResultForm(parent);
-    translationResultForm->setWindowFlag(Qt::Popup);
     trayIcon->show();
 
-    generateMenu();
-    connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
-}
+    // Setup all forms
+    settingsForm = new SettingsForm(parent);
+    downloadLanguagesForm = new DownloadLanguageForm(parent);
+    connect(downloadLanguagesForm, SIGNAL(languageAdded(QString)), this, SLOT(languageAdded(QString)));
+    translationResultForm = new TranslationResultForm(parent);
+    translationResultForm->setWindowFlag(Qt::Popup);
 
-void Tray::generateMenu()
-{
+    // Create a menu
     menu = new QMenu(this);
     langFromMenu = new QMenu("Translate from", menu);
     langToMenu = new QMenu("Translate to", menu);
-    menuLangFromGroup = new QActionGroup(this);
-    menuLangToGroup = new QActionGroup(this);
-
-    foreach (Lang language, Language::languages) {
-        addLangMenuItem("from", language.name, QVariant(language.name), QIcon(":/resources/lang_icons/"+ language.shortName +".png"), Language::isDownloaded(language.name));
-        addLangMenuItem("to", language.name, QVariant(language.name), QIcon(":/resources/lang_icons/"+ language.shortName +".png"));
-    }
 
     menu->addMenu(langFromMenu);
-    langFromMenu->addSeparator();
-    langFromMenu->addAction("Download more languages", downloadLanguagesForm, SLOT(showForm()));
-
     menu->addMenu(langToMenu);
     menu->addSeparator();
     menu->addAction("Settings...", settingsForm, SLOT(showForm()));
 
     menu->addSeparator();
     menu->addAction("Exit", qApp, SLOT(quit()));
+
+    // Fill a menu with all available languages
+    foreach (Lang language, Language::languages) {
+        addLanguageToMenu("from", language.name);
+        addLanguageToMenu("to", language.name);
+    }
+
+    langFromMenu->addSeparator();
+    langFromMenu->addAction("Download more languages", downloadLanguagesForm, SLOT(showForm()));
+
     trayIcon->setContextMenu(menu);
+
+    connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
 }
 
 void Tray::showMessage(const QString &message)
@@ -75,32 +76,48 @@ void Tray::chooseToLang()
     App::theApp()->settings()->setValue("/Settings/Languages/to", action->data().toString());
 }
 
-void Tray::addLangMenuItem(QString type, QString title, QVariant data , QIcon icon, bool langDownloaded)
+void Tray::addLanguageToMenu(QString type, QString name)
 {
-    QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "en").toString();
-    QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "en").toString();
+    QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "English").toString();
+    QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "English").toString();
 
-    QAction *item = new QAction(title);
+    QAction *item = new QAction(name);
     item->setCheckable(true);
-    item->setData(data);
-    item->setIcon(icon);
+    item->setData(QVariant(name));
+    item->setIcon(QIcon(":/resources/lang_icons/" + Language::getShortName(name) + ".png"));
 
-    if (langDownloaded && type == "from") {
-       langFromMenu->addAction(item);
-       if (data.toString() == settingsLangFrom) item->setChecked(true);
-       QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
-       menuLangFromGroup->addAction(item);
+    if (Language::isDownloaded(name) && type == "from") {
+        bool isInserted = false;
+
+        // search for the separator and if exist - add menu item before it
+        foreach (QAction* a, langFromMenu->actions())
+        {
+            if (a->isSeparator()) {
+                langFromMenu->insertAction(a, item);
+                isInserted = true;
+            }
+        }
+
+        // if there was no separator - just add a new menu item
+        if (!isInserted) langFromMenu->addAction(item);
+
+        if (name == settingsLangFrom) item->setChecked(true);
+        QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
     }
 
     if (type == "to") {
         langToMenu->addAction(item);
-        if (data.toString() == settingsLangTo) item->setChecked(true);
+        if (name == settingsLangTo) item->setChecked(true);
         QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseToLang()));
-        menuLangToGroup->addAction(item);
     }
 }
 
 void Tray::showMenu()
 {
     trayIcon->contextMenu()->exec(QCursor::pos());
+}
+
+void Tray::languageAdded(QString name)
+{
+    addLanguageToMenu("from", name);
 }

@@ -5,7 +5,10 @@ DownloadLanguageForm::DownloadLanguageForm(QWidget *parent) :
     ui(new Ui::DownloadLanguageForm)
 {
     ui->setupUi(this);
-    networkFileDownloader = new NetworkFileDownloader();
+    networkFileDownloader = new NetworkFileDownloader;
+
+    msgBox = new QMessageBox;
+    msgBox->setText("Download finished. Now you can choose this language in 'Translate from' menu item");
 
     connect(networkFileDownloader, SIGNAL(downloadProgress(qint64,qint64)), this, SLOT(onDownloadProgress(qint64,qint64)));
     connect(networkFileDownloader, SIGNAL(downloadFinished(QNetworkReply*,QString)), this, SLOT(onDownloadFinished(QNetworkReply*, QString)));
@@ -61,7 +64,7 @@ void DownloadLanguageForm::onDownloadProgress(qint64 bytesRead,qint64 bytesTotal
     ui->progressBar->setValue(static_cast<int>(100.0 * bytesRead / bytesTotal));
 }
 
-void DownloadLanguageForm::onDownloadFinished(QNetworkReply *reply, QString name) {
+void DownloadLanguageForm::onDownloadFinished(QNetworkReply *reply, QString url) {
     // Update the button labels for every DownloadLanguageItem
     for(int i = 0; i < ui->listWidget->count(); ++i)
     {
@@ -72,4 +75,10 @@ void DownloadLanguageForm::onDownloadFinished(QNetworkReply *reply, QString name
             widget->ui->pushButton->setText("Remove");
         }
     }
+
+    // Add downloaded language to the menu
+    emit languageAdded(Language::getNameByUrl(url));
+
+    // Show message box
+    msgBox->exec();
 }

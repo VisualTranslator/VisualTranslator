@@ -25,11 +25,15 @@ public slots:
     virtual void closeEvent(QCloseEvent *event);
     void downloadStart(QString name);
     void onDownloadProgress(qint64 bytesRead, qint64 bytesTotal);
-    void onDownloadFinished(QNetworkReply *reply, QString name);
+    void onDownloadFinished(QNetworkReply *reply, QString url);
 
 private:
     Ui::DownloadLanguageForm *ui;
+    QMessageBox *msgBox;
     void addLanguage(QString name, QString iconPath, bool isDownloaded);
+
+signals:
+    void languageAdded(QString name);
 };
 
 #endif // DOWNLOADLANGUAGEFORM_H

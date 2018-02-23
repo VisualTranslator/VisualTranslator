@@ -14,8 +14,7 @@ class Tray : public QWidget
 private:
     QActionGroup *menuLangToGroup;
     QActionGroup *menuLangFromGroup;
-    virtual void generateMenu();
-    void addLangMenuItem(QString type, QString title, QVariant data , QIcon icon = QIcon(), bool langDownloaded = false);
+    void addLanguageToMenu(QString type, QString name);
     QSystemTrayIcon *trayIcon;
     QMenu *menu;
     QMenu *langToMenu;
@@ -32,6 +31,7 @@ public slots:
     void chooseFromLang();
     void chooseToLang();
     void showMenu();
+    void languageAdded(QString name);
 };
 
 #endif // TRAY_H
