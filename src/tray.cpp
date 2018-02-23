@@ -22,9 +22,6 @@ void Tray::generateMenu()
     menuLangFromGroup = new QActionGroup(this);
     menuLangToGroup = new QActionGroup(this);
 
-    QDir tessdataFolder(qApp->applicationDirPath() + "/tessdata");
-    QStringList tessFiles = tessdataFolder.entryList();
-
     foreach (Lang language, Language::languages) {
         addLangMenuItem("from", language.name, QVariant(language.name), QIcon(":/resources/lang_icons/"+ language.shortName +".png"), Language::isDownloaded(language.name));
         addLangMenuItem("to", language.name, QVariant(language.name), QIcon(":/resources/lang_icons/"+ language.shortName +".png"));
