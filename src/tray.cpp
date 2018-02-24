@@ -83,7 +83,7 @@ void Tray::addLanguageToMenu(QString name)
     QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "English").toString();
 
     // add item to the `Translate from` menu
-    QAction *actionFrom = new QAction(name);
+    QAction *actionFrom = new QAction(Language::getOriginalName(name));
     actionFrom->setCheckable(true);
     actionFrom->setData(QVariant(name));
     actionFrom->setIcon(QIcon(Language::getIconPath(name)));
@@ -94,7 +94,7 @@ void Tray::addLanguageToMenu(QString name)
     QObject::connect(actionFrom, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
 
     // add item to the `Translate to` menu
-    QAction *actionTo = new QAction(name);
+    QAction *actionTo = new QAction(Language::getOriginalName(name));
     actionTo->setCheckable(true);
     actionTo->setData(QVariant(name));
     actionTo->setIcon(QIcon(Language::getIconPath(name)));

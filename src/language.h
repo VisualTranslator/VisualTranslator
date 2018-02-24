@@ -9,6 +9,7 @@ struct Lang
   QString name;
   QString shortName;
   QString googleName;
+  QString originalName;
 };
 
 class Language : public QObject
@@ -22,6 +23,7 @@ public:
     static QString getFileName(QString name);
     static QString getShortName(QString name);
     static QString getGoogleName(QString name);
+    static QString getOriginalName(QString name);
     static QString getIconPath(QString name);
     static QString getNameByUrl(QString url);
 
