@@ -29,6 +29,11 @@ QString Language::getGoogleName(QString name)
     return Language::find(name).googleName;
 }
 
+QString Language::getIconPath(QString name)
+{
+    return ":resources/lang_icons/" + Language::find(name).shortName + ".png";
+}
+
 QList<Lang> Language::languages = QList<Lang>(
     {
         {

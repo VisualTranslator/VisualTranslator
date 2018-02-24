@@ -22,6 +22,7 @@ public:
     static QString getFileName(QString name);
     static QString getShortName(QString name);
     static QString getGoogleName(QString name);
+    static QString getIconPath(QString name);
     static QString getNameByUrl(QString url);
 
 private:

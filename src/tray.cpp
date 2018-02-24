@@ -79,7 +79,7 @@ void Tray::addLanguageToMenu(QString type, QString name)
     QAction *item = new QAction(name);
     item->setCheckable(true);
     item->setData(QVariant(name));
-    item->setIcon(QIcon(":/resources/lang_icons/" + Language::getShortName(name) + ".png"));
+    item->setIcon(QIcon(Language::getIconPath(name)));
 
     if (type == "from") {
         bool isInserted = false;
