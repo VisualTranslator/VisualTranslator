@@ -9,9 +9,6 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
 
     // Setup all forms
     settingsForm = new SettingsForm(parent);
-    downloadLanguagesForm = new DownloadLanguageForm(parent);
-    connect(downloadLanguagesForm, SIGNAL(languageAdded(QString)), this, SLOT(languageAdded(QString)));
-    connect(downloadLanguagesForm, SIGNAL(languageRemoved(QString)), this, SLOT(languageRemoved(QString)));
     translationResultForm = new TranslationResultForm(parent);
     translationResultForm->setWindowFlag(Qt::Popup);
 
@@ -33,9 +30,6 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
         addLanguageToMenu("from", language.name);
         addLanguageToMenu("to", language.name);
     }
-
-    langFromMenu->addSeparator();
-    langFromMenu->addAction("Download more languages", downloadLanguagesForm, SLOT(showForm()));
 
     trayIcon->setContextMenu(menu);
 
@@ -87,7 +81,7 @@ void Tray::addLanguageToMenu(QString type, QString name)
     item->setData(QVariant(name));
     item->setIcon(QIcon(":/resources/lang_icons/" + Language::getShortName(name) + ".png"));
 
-    if (Language::isDownloaded(name) && type == "from") {
+    if (type == "from") {
         bool isInserted = false;
 
         // search for the separator and if exist - add menu item before it

@@ -21,9 +21,6 @@ SOURCES += main.cpp \
     recognizer.cpp \
     translator.cpp \
     settingsform.cpp \
-    downloadlanguageform.cpp \
-    downloadlanguageitem.cpp \
-    networkfiledownloader.cpp \
     language.cpp \
     translationresultform.cpp
 
@@ -35,16 +32,11 @@ HEADERS  += \
     recognizer.h \
     translator.h \
     settingsform.h \
-    downloadlanguageform.h \
-    downloadlanguageitem.h \
-    networkfiledownloader.h \
     language.h \
     translationresultform.h
 
 FORMS    += \
     settingsform.ui \
-    downloadlanguageform.ui \
-    downloadlanguageitem.ui \
     translationresultform.ui
 include(qhotkey.pri)
 

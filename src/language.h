@@ -9,7 +9,6 @@ struct Lang
   QString name;
   QString shortName;
   QString googleName;
-  QString url;
 };
 
 class Language : public QObject
@@ -24,7 +23,6 @@ public:
     static QString getShortName(QString name);
     static QString getGoogleName(QString name);
     static QString getNameByUrl(QString url);
-    static bool isDownloaded(QString name);
 
 private:
     static Lang find(QString name);

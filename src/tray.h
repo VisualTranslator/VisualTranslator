@@ -3,8 +3,8 @@
 
 #include <QtWidgets>
 #include "app.h"
+#include "language.h"
 #include "settingsform.h"
-#include "downloadlanguageform.h"
 #include <translationresultform.h>
 #include <ui_translationresultform.h>
 
@@ -21,7 +21,6 @@ private:
     QMenu *langToMenu;
     QMenu *langFromMenu;
     SettingsForm *settingsForm;
-    DownloadLanguageForm *downloadLanguagesForm;
     TranslationResultForm *translationResultForm;
 public:
     explicit Tray(QWidget *parent = 0);

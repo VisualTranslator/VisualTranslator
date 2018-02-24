@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QtWidgets>
 #include "app.h"
-#include "ui_settingsform.h"
 
 namespace Ui {
 class SettingsForm;
