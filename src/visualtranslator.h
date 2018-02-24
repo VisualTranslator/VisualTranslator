@@ -6,6 +6,7 @@
 #include <tray.h>
 #include <recognizer.h>
 #include <screenarea.h>
+#include <translator.h>
 
 class VisualTranslator : public QWidget
 {
@@ -15,16 +16,10 @@ private:
     Tray *tray;
     Recognizer *recognizer;
     ScreenArea *screenArea;
-
-protected:
+    Translator *translator;
 
 public:
     explicit VisualTranslator(QWidget *parent = 0);
-
-signals:
-
-public slots:
-    void start();
 };
 
 #endif // VISUALTRANSLATOR_H

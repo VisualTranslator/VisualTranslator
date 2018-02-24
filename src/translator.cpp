@@ -6,12 +6,14 @@ Translator::Translator(QObject *parent) : QObject(parent)
     connect(qNetwork, SIGNAL(finished(QNetworkReply*)), this, SLOT(handleNetworkData(QNetworkReply*)));
 }
 
-void Translator::start(char *&text)
+void Translator::translate(QString text)
 {
     QString langFrom = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/from").toString());
     QString langTo = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/to").toString());
 
-    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(*&text);
+    original = text;
+
+    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(text);
     QNetworkRequest request(url);
     qNetwork->get(request);
 }
@@ -30,6 +32,6 @@ void Translator::handleNetworkData(QNetworkReply *reply)
         result += rows[i].toArray()[0].toString();
     }
 
-    emit showResult(result);
+    emit translated(original, result);
     reply->deleteLater();
 }

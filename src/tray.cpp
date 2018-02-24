@@ -40,9 +40,10 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
 }
 
-void Tray::showMessage(const QString &message)
+void Tray::showMessage(const QString &original, const QString &translation)
 {
-    translationResultForm->ui->textEdit->setText(message);
+    translationResultForm->ui->originalTextEdit->setText(original);
+    translationResultForm->ui->translatedTextEdit->setText(translation);
 
     // search for the correct position for the translationResultForm
     int screenWidth = QApplication::desktop()->screenGeometry().width();

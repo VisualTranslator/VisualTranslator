@@ -23,10 +23,9 @@ private:
     TranslationResultForm *translationResultForm;
 public:
     explicit Tray(QWidget *parent = 0);
-signals:
 
 public slots:
-    void showMessage(const QString &message);
+    void showMessage(const QString &original, const QString &translation);
     void chooseFromLang();
     void chooseToLang();
     void showMenu();

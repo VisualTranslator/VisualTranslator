@@ -3,9 +3,10 @@
 
 #include <QObject>
 #include <QtWidgets>
+#include <app.h>
 #include <allheaders.h>
 #include <baseapi.h>
-#include "translator.h"
+#include <language.h>
 
 class Recognizer : public QObject
 {
@@ -13,16 +14,14 @@ class Recognizer : public QObject
 
 private:
     Pix* qImage2PIX(QImage& qImage);
-    Translator *translator;
 public:
     explicit Recognizer(QObject *parent = 0);
 
 signals:
-    void translate(char *&text);
-    void signalShowResult(const QString &result);
+    void recognized(QString text);
+
 public slots:
     void start(const QPixmap &img);
-    void showResult(const QString &result);
 };
 
 #endif // RECOGNIZER_H

@@ -23,9 +23,12 @@ protected:
 
 public:
     ScreenArea(QWidget *parent = 0);
-    void showArea();
+
+public slots:
+    void show();
+
 signals:
-    void recognize(const QPixmap &img);
+    void selected(const QPixmap &img);
 };
 
 #endif // SCREENAREA_H

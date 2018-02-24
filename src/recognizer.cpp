@@ -4,9 +4,7 @@ using namespace tesseract;
 
 Recognizer::Recognizer(QObject *parent) : QObject(parent)
 {
-    translator = new Translator;
-    QObject::connect(this, SIGNAL(translate(char*&)), translator, SLOT(start(char*&)));
-    QObject::connect(translator, SIGNAL(showResult(QString)), this, SLOT(showResult(QString)));
+
 }
 
 void Recognizer::start(const QPixmap &img)
@@ -27,15 +25,11 @@ void Recognizer::start(const QPixmap &img)
     api->SetImage(image);
     outText = api->GetUTF8Text();
 
-    emit translate(outText);
+
+    emit recognized(QString(outText));
 
     api->End();
     pixDestroy(&image);
-}
-
-void Recognizer::showResult(const QString &result)
-{
-    emit signalShowResult(result);
 }
 
 Pix* Recognizer::qImage2PIX(QImage& qImage) {

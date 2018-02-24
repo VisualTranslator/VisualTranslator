@@ -15,15 +15,16 @@ class Translator : public QObject
 
 private:
     QNetworkAccessManager *qNetwork;
+    QString original;
 
 public:
     explicit Translator(QObject *parent = 0);
 
 signals:
-    void showResult(const QString &result);
+    void translated(QString original, QString result);
 
 public slots:
-    void start(char *&text);
+    void translate(QString text);
     void handleNetworkData(QNetworkReply *reply);
 };
 

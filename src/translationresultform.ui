@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>171</height>
+    <height>274</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,15 +19,30 @@
      <x>9</x>
      <y>9</y>
      <width>381</width>
-     <height>151</height>
+     <height>261</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QTextEdit" name="textEdit">
+     <widget class="QTextEdit" name="originalTextEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QTextEdit" name="translatedTextEdit">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
        </font>
       </property>
      </widget>

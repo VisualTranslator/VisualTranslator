@@ -5,7 +5,7 @@ ScreenArea::ScreenArea(QWidget *parent): QLabel(parent), isActive(false)
     this->setCursor(QPixmap(":/resources/cursor.png"));
 }
 
-void ScreenArea::showArea()
+void ScreenArea::show()
 {
     screenshot = QPixmap::grabWindow(QApplication::desktop()->winId());
     showFullScreen();
@@ -45,7 +45,7 @@ void ScreenArea::mouseReleaseEvent(QMouseEvent *ev)
     }
     cropped =  screenshot.copy(rect);
     this->hide();
-    emit recognize(cropped);
+    emit selected(cropped);
 }
 
 void ScreenArea::mouseMoveEvent(QMouseEvent *ev)

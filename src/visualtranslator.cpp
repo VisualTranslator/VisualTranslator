@@ -6,13 +6,10 @@ VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
    recognizer = new Recognizer(this);
    screenArea = new ScreenArea;
    hotkey = new QHotkey(QKeySequence("ctrl+alt+Q"), true, this);
+   translator = new Translator;
 
-   QObject::connect(recognizer, SIGNAL(signalShowResult(QString)), tray, SLOT(showMessage(QString)));
-   QObject::connect(hotkey, SIGNAL(activated()), this, SLOT(start()));
-   QObject::connect(screenArea, SIGNAL(recognize(QPixmap)), recognizer, SLOT(start(QPixmap)));
-}
-
-void VisualTranslator::start()
-{
-    screenArea->showArea();
+   QObject::connect(hotkey, SIGNAL(activated()), screenArea, SLOT(show()));
+   QObject::connect(screenArea, SIGNAL(selected(QPixmap)), recognizer, SLOT(start(QPixmap)));
+   QObject::connect(recognizer, SIGNAL(recognized(QString)), translator, SLOT(translate(QString)));
+   QObject::connect(translator, SIGNAL(translated(QString, QString)), tray, SLOT(showMessage(QString,QString)));
 }
