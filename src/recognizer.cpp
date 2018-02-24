@@ -16,7 +16,8 @@ void Recognizer::start(const QPixmap &img)
 
     QString langDir = qApp->applicationDirPath();
 
-    if (api->Init(langDir.toLatin1().data(), "eng")) {
+    QString translateFrom = Language::getShortName(App::theApp()->settings()->value("/Settings/Languages/from").toString());
+    if (api->Init(langDir.toLatin1().data(), translateFrom.toLatin1().data())) {
         qDebug() << "Could not initialize tesseract.\n";
         exit(1);
     }
