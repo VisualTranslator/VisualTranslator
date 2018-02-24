@@ -12,8 +12,7 @@ class Tray : public QWidget
 {
     Q_OBJECT
 private:
-    void addLanguageToMenu(QString type, QString name);
-    void removeLanguageFromMenu(QString name);
+    void addLanguageToMenu(QString name);
     QActionGroup *menuLangToGroup;
     QActionGroup *menuLangFromGroup;
     QSystemTrayIcon *trayIcon;
@@ -31,8 +30,6 @@ public slots:
     void chooseFromLang();
     void chooseToLang();
     void showMenu();
-    void languageRemoved(QString name);
-    void languageAdded(QString name);
 };
 
 #endif // TRAY_H

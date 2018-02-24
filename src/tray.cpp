@@ -27,8 +27,7 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
 
     // Fill a menu with all available languages
     foreach (Lang language, Language::languages) {
-        addLanguageToMenu("from", language.name);
-        addLanguageToMenu("to", language.name);
+        addLanguageToMenu(language.name);
     }
 
     trayIcon->setContextMenu(menu);
@@ -71,64 +70,34 @@ void Tray::chooseToLang()
     App::theApp()->settings()->setValue("/Settings/Languages/to", action->data().toString());
 }
 
-void Tray::addLanguageToMenu(QString type, QString name)
+void Tray::addLanguageToMenu(QString name)
 {
+    // receive saved settings
     QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "English").toString();
     QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "English").toString();
 
-    QAction *item = new QAction(name);
-    item->setCheckable(true);
-    item->setData(QVariant(name));
-    item->setIcon(QIcon(Language::getIconPath(name)));
+    // add item to the `Translate from` menu
+    QAction *actionFrom = new QAction(name);
+    actionFrom->setCheckable(true);
+    actionFrom->setData(QVariant(name));
+    actionFrom->setIcon(QIcon(Language::getIconPath(name)));
+    actionFrom->setChecked(name == settingsLangFrom);
 
-    if (type == "from") {
-        bool isInserted = false;
+    langFromMenu->addAction(actionFrom);
+    QObject::connect(actionFrom, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
 
-        // search for the separator and if exist - add menu item before it
-        foreach (QAction* a, langFromMenu->actions())
-        {
-            if (a->isSeparator()) {
-                langFromMenu->insertAction(a, item);
-                isInserted = true;
-            }
-        }
+    // add item to the `Translate to` menu
+    QAction *actionTo = new QAction(name);
+    actionTo->setCheckable(true);
+    actionTo->setData(QVariant(name));
+    actionTo->setIcon(QIcon(Language::getIconPath(name)));
+    actionTo->setChecked(name == settingsLangTo);
 
-        // if there was no separator - just add a new menu item
-        if (!isInserted) langFromMenu->addAction(item);
-
-        if (name == settingsLangFrom) item->setChecked(true);
-        QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
-    }
-
-    if (type == "to") {
-        langToMenu->addAction(item);
-        if (name == settingsLangTo) item->setChecked(true);
-        QObject::connect(item, SIGNAL(triggered()), this, SLOT(chooseToLang()));
-    }
-}
-
-void Tray::removeLanguageFromMenu(QString name)
-{
-    foreach (QAction* a, langFromMenu->actions())
-    {
-        if (a->data().toString() == name) {
-            langFromMenu->removeAction(a);
-            break;
-        }
-    }
+    langToMenu->addAction(actionTo);
+    QObject::connect(actionTo, SIGNAL(triggered()), this, SLOT(chooseToLang()));
 }
 
 void Tray::showMenu()
 {
     trayIcon->contextMenu()->exec(QCursor::pos());
-}
-
-void Tray::languageAdded(QString name)
-{
-    addLanguageToMenu("from", name);
-}
-
-void Tray::languageRemoved(QString name)
-{
-    removeLanguageFromMenu(name);
 }
