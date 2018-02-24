@@ -17,8 +17,13 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     langFromMenu = new QMenu("Translate from", menu);
     langToMenu = new QMenu("Translate to", menu);
 
+    // used to simulate toggle effect when choose some language
+    menuLangFromGroup = new QActionGroup(this);
+    menuLangToGroup = new QActionGroup(this);
+
     menu->addMenu(langFromMenu);
     menu->addMenu(langToMenu);
+
     menu->addSeparator();
     menu->addAction("Settings...", settingsForm, SLOT(showForm()));
 
@@ -84,6 +89,7 @@ void Tray::addLanguageToMenu(QString name)
     actionFrom->setChecked(name == settingsLangFrom);
 
     langFromMenu->addAction(actionFrom);
+    menuLangFromGroup->addAction(actionFrom);
     QObject::connect(actionFrom, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
 
     // add item to the `Translate to` menu
@@ -94,6 +100,7 @@ void Tray::addLanguageToMenu(QString name)
     actionTo->setChecked(name == settingsLangTo);
 
     langToMenu->addAction(actionTo);
+    menuLangToGroup->addAction(actionTo);
     QObject::connect(actionTo, SIGNAL(triggered()), this, SLOT(chooseToLang()));
 }
 
