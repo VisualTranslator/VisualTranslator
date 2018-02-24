@@ -61,3 +61,11 @@ void ScreenArea::paintEvent(QPaintEvent *ev)
     painter.setPen(QPen(QColor(11, 164, 236), 2, Qt::DashLine));
     if (isActive) painter.drawRect(QRect(start, end));
 }
+
+void ScreenArea::keyPressEvent(QKeyEvent *ev)
+{
+    if (ev->key() == Qt::Key_Escape)
+    {
+        this->hide();
+    }
+}

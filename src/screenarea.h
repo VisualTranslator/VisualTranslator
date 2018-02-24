@@ -20,6 +20,7 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *ev);
     virtual void mouseMoveEvent(QMouseEvent *ev);
     virtual void paintEvent(QPaintEvent *ev);
+    virtual void keyPressEvent(QKeyEvent *ev);
 
 public:
     ScreenArea(QWidget *parent = 0);
