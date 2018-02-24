@@ -2,20 +2,6 @@
 
 VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 {
-    // Setup the main stylesheet
-    QFile file(":/resources/stylesheet.qss");
-    if(file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        QString style(file.readAll());
-        this->setStyleSheet(style);
-        file.close();
-    }
-
-    // Setup the main font
-    QFontDatabase::addApplicationFont(":/resources/fonts/OpenSans-Regular.ttf");
-    QFont OpenSans("OpenSans", 10, QFont::Normal);
-    this->setFont(OpenSans);
-
     // Initialize related modules
     hotkey = new QHotkey(QKeySequence("ctrl+alt+Q"), true, this);
     screenArea = new ScreenArea;
