@@ -23,12 +23,15 @@ protected:
 
 public slots:
     void showForm();
-    void shortcutChanged(QString shortcut);
-    virtual void closeEvent(QCloseEvent *event);
+    void shortcutChange(QString shortcut);
 
 private slots:
+    virtual void closeEvent(QCloseEvent *event);
     void on_btnCancel_clicked();
     void on_btnSaveChanges_clicked();
+
+signals:
+    void shortcutChanged(QString shortcut);
 
 private:
     Ui::SettingsForm *ui;

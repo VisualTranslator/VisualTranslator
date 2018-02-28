@@ -20,6 +20,10 @@ private:
 
 public:
     explicit VisualTranslator(QWidget *parent = 0);
+
+public slots:
+    void changeShortcut(QString shortcut);
 };
+
 
 #endif // VISUALTRANSLATOR_H

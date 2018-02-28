@@ -19,7 +19,7 @@ bool SettingsForm::eventFilter(QObject* object, QEvent* event)
 {
     if(object == ui->lineEdit && event->type() == QEvent::MouseButtonPress) {
         shortcutSetupForm = new ShortcutSetupForm();
-        connect(shortcutSetupForm, SIGNAL(shortcutChanged(QString)), this, SLOT(shortcutChanged(QString)));
+        connect(shortcutSetupForm, SIGNAL(shortcutChanged(QString)), this, SLOT(shortcutChange(QString)));
         shortcutSetupForm->show();
         return false; // lets the event continue to the edit
     }
@@ -75,7 +75,8 @@ void SettingsForm::on_btnSaveChanges_clicked()
     this->hide();
 }
 
-void SettingsForm::shortcutChanged(QString shortcut)
+void SettingsForm::shortcutChange(QString shortcut)
 {
     ui->lineEdit->setText(shortcut);
+    emit shortcutChanged(shortcut);
 }

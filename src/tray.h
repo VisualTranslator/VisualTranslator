@@ -29,6 +29,9 @@ public slots:
     void chooseFromLang();
     void chooseToLang();
     void showMenu();
+
+signals:
+    void shortcutChanged(QString name);
 };
 
 #endif // TRAY_H

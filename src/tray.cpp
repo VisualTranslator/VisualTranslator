@@ -9,6 +9,8 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
 
     // Setup all forms
     settingsForm = new SettingsForm(parent);
+    connect(settingsForm, SIGNAL(shortcutChanged(QString)), this, SIGNAL(shortcutChanged(QString)));
+
     translationResultForm = new TranslationResultForm(parent);
     translationResultForm->setWindowFlag(Qt::Popup);
 
