@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     translator.cpp \
     settingsform.cpp \
     language.cpp \
-    translationresultform.cpp
+    translationresultform.cpp \
+    shortcutsetupform.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -33,11 +34,13 @@ HEADERS  += \
     translator.h \
     settingsform.h \
     language.h \
-    translationresultform.h
+    translationresultform.h \
+    shortcutsetupform.h
 
 FORMS    += \
     settingsform.ui \
-    translationresultform.ui
+    translationresultform.ui \
+    shortcutsetupform.ui
 include(qhotkey.pri)
 
 

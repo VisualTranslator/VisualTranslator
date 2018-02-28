@@ -6,6 +6,7 @@ SettingsForm::SettingsForm(QWidget *parent) :
     ui(new Ui::SettingsForm)
 {
     ui->setupUi(this);
+    ui->lineEdit->installEventFilter(this);
     this->setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::CustomizeWindowHint);
 }
 
@@ -14,8 +15,22 @@ SettingsForm::~SettingsForm()
     delete ui;
 }
 
+bool SettingsForm::eventFilter(QObject* object, QEvent* event)
+{
+    if(object == ui->lineEdit && event->type() == QEvent::MouseButtonPress) {
+        shortcutSetupForm = new ShortcutSetupForm();
+        connect(shortcutSetupForm, SIGNAL(shortcutChanged(QString)), this, SLOT(shortcutChanged(QString)));
+        shortcutSetupForm->show();
+        return false; // lets the event continue to the edit
+    }
+    return false;
+}
+
 void SettingsForm::showForm()
 {
+    QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
+    ui->lineEdit->setText(shortcut);
+
     if (App::theApp()->settings()->value("/Settings/Autorun/Flag", "0").toString() == QString("0"))
     {
         ui->checkBox->setChecked(false);
@@ -54,5 +69,13 @@ void SettingsForm::on_btnSaveChanges_clicked()
         QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
         settings.remove("VisualTranslator");
     }
+
+    App::theApp()->settings()->setValue("/Settings/Shortcut/Recognition", ui->lineEdit->text());
+
     this->hide();
+}
+
+void SettingsForm::shortcutChanged(QString shortcut)
+{
+    ui->lineEdit->setText(shortcut);
 }

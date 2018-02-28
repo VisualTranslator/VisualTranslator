@@ -2,8 +2,10 @@
 
 VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 {
+    QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
+
     // Initialize related modules
-    hotkey = new QHotkey(QKeySequence("ctrl+alt+Q"), true, this);
+    hotkey = new QHotkey(QKeySequence(shortcut), true, this);
     screenArea = new ScreenArea;
     recognizer = new Recognizer(this);
     translator = new Translator;
