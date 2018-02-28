@@ -13,6 +13,7 @@ class Tray : public QWidget
     Q_OBJECT
 private:
     void addLanguageToMenu(QString name);
+    QAction *startTranslation;
     QActionGroup *menuLangToGroup;
     QActionGroup *menuLangFromGroup;
     QSystemTrayIcon *trayIcon;
@@ -29,9 +30,11 @@ public slots:
     void chooseFromLang();
     void chooseToLang();
     void showMenu();
+    void shortcutChange(QString shortcut);
 
 signals:
-    void shortcutChanged(QString name);
+    void shortcutChanged(QString shortcut);
+    void startRecognitionPressed();
 };
 
 #endif // TRAY_H

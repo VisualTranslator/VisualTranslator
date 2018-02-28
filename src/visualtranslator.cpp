@@ -13,10 +13,11 @@ VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 
     // Setup connection between the modules in order of execution
     QObject::connect(hotkey, SIGNAL(activated()), screenArea, SLOT(show()));
+    QObject::connect(tray, SIGNAL(startRecognitionPressed()), screenArea, SLOT(show()));
+
     QObject::connect(screenArea, SIGNAL(selected(QPixmap)), recognizer, SLOT(start(QPixmap)));
     QObject::connect(recognizer, SIGNAL(recognized(QString)), translator, SLOT(translate(QString)));
     QObject::connect(translator, SIGNAL(translated(QString, QString)), tray, SLOT(showMessage(QString,QString)));
-
     QObject::connect(tray, SIGNAL(shortcutChanged(QString)), this, SLOT(changeShortcut(QString)));
 }
 

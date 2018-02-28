@@ -9,15 +9,22 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
 
     // Setup all forms
     settingsForm = new SettingsForm(parent);
-    connect(settingsForm, SIGNAL(shortcutChanged(QString)), this, SIGNAL(shortcutChanged(QString)));
+    connect(settingsForm, SIGNAL(shortcutChanged(QString)), this, SLOT(shortcutChange(QString)));
 
     translationResultForm = new TranslationResultForm(parent);
     translationResultForm->setWindowFlag(Qt::Popup);
 
-    // Create a menu
+    // Create a menus
     menu = new QMenu(this);
     langFromMenu = new QMenu("Translate from", menu);
     langToMenu = new QMenu("Translate to", menu);
+
+    QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
+    startTranslation = new QAction(tr("&Start translation"), this);
+    startTranslation->setShortcut(QKeySequence(shortcut));
+    connect(startTranslation, SIGNAL(triggered(bool)), this, SIGNAL(startRecognitionPressed()));
+
+    menu->addAction(startTranslation);
 
     // used to simulate toggle effect when choose some language
     menuLangFromGroup = new QActionGroup(this);
@@ -40,6 +47,12 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     trayIcon->setContextMenu(menu);
 
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
+}
+
+void Tray::shortcutChange(QString shortcut)
+{
+    startTranslation->setShortcut(QKeySequence(shortcut));
+    emit shortcutChanged(shortcut);
 }
 
 void Tray::showMessage(const QString &original, const QString &translation)
