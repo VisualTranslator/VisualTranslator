@@ -93,13 +93,11 @@ void Tray::showMessage(const QString &original, const QString &translation)
 
 void Tray::chooseFromLang(QString name)
 {
-    qDebug() << name;
     App::theApp()->settings()->setValue("/Settings/Languages/from", name);
 }
 
 void Tray::chooseToLang(QString name)
 {
-    qDebug() << name;
     App::theApp()->settings()->setValue("/Settings/Languages/to", name) ;
 }
 

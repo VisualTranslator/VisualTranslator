@@ -1,6 +1,5 @@
 #include "languageqcombobox.h"
 #include <QStylePainter>
-#include <QDebug>
 
 LanguageQComboBox::LanguageQComboBox(QString direction, QWidget *parent): QComboBox(parent)
 {
