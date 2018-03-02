@@ -13,8 +13,20 @@ void Recognizer::start(const QPixmap &img)
     TessBaseAPI *api = new TessBaseAPI();
 
     QString langDir = qApp->applicationDirPath();
+    QString translateFrom = Language::getShortName(App::theApp()->settings()->value("/Settings/Languages/from", "Auto").toString());
 
-    QString translateFrom = Language::getShortName(App::theApp()->settings()->value("/Settings/Languages/from").toString());
+    // if auto is selected - create a language string in format: "shortname+shortname+shortname...etc"
+    if (translateFrom == "auto") {
+        translateFrom = "";
+        foreach (Lang language, Language::languages) {
+            if (language.name == "Auto") continue;
+            translateFrom += language.shortName + "+";
+        }
+
+        // remove the last "+" char
+        translateFrom.chop(1);
+    }
+
     if (api->Init(langDir.toLatin1().data(), translateFrom.toLatin1().data())) {
         qDebug() << "Could not initialize tesseract.\n";
         exit(1);
@@ -24,7 +36,6 @@ void Recognizer::start(const QPixmap &img)
     Pix *image = qImage2PIX(qImg);
     api->SetImage(image);
     outText = api->GetUTF8Text();
-
 
     emit recognized(QString(outText));
 

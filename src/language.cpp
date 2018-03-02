@@ -10,8 +10,8 @@ Lang Language::find(QString name) {
         if (language.name == name) return language;
     }
 
-    // return the default language (English) with id 1
-    return Language::languages[1];
+    // return the default language (English) with id 2
+    return Language::languages[2];
 }
 
 QString Language::getFileName(QString name)
@@ -41,6 +41,12 @@ QString Language::getOriginalName(QString name)
 
 QList<Lang> Language::languages = QList<Lang>(
 {
+                {
+                    "Auto",
+                    "auto",
+                    "auto",
+                    "Auto",
+                },
                 {
                     "Arabic",
                     "ara",

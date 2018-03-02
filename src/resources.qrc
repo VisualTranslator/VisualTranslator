@@ -15,5 +15,6 @@
         <file>resources/stylesheet.qss</file>
         <file>resources/lang_icons/ara.png</file>
         <file>resources/fonts/OpenSans-Regular.ttf</file>
+        <file>resources/lang_icons/auto.png</file>
     </qresource>
 </RCC>

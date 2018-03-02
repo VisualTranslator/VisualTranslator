@@ -94,7 +94,7 @@ void Tray::chooseToLang()
 void Tray::addLanguageToMenu(QString name)
 {
     // receive saved settings
-    QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "English").toString();
+    QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "Auto").toString();
     QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "English").toString();
 
     // add item to the `Translate from` menu
@@ -107,6 +107,9 @@ void Tray::addLanguageToMenu(QString name)
     langFromMenu->addAction(actionFrom);
     menuLangFromGroup->addAction(actionFrom);
     QObject::connect(actionFrom, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
+
+    // do not add Auto item to `Translate to` menu
+    if (name == "Auto") return;
 
     // add item to the `Translate to` menu
     QAction *actionTo = new QAction(Language::getOriginalName(name));

@@ -8,8 +8,8 @@ Translator::Translator(QObject *parent) : QObject(parent)
 
 void Translator::translate(QString text)
 {
-    QString langFrom = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/from").toString());
-    QString langTo = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/to").toString());
+    QString langFrom = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/from", "Auto").toString());
+    QString langTo = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/to", "English").toString());
 
     original = text;
 
