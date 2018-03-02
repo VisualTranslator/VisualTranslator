@@ -14,38 +14,50 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     translationResultForm = new TranslationResultForm(parent);
     translationResultForm->setWindowFlag(Qt::Popup);
 
-    // Create a menus
+    // CREATE A MENU
     menu = new QMenu(this);
-    langFromMenu = new QMenu("Translate from", menu);
-    langToMenu = new QMenu("Translate to", menu);
 
+    // create button to start recognition process
     QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
     startTranslation = new QAction(tr("&Start translation"), this);
     startTranslation->setShortcut(QKeySequence(shortcut));
+    menu->addAction(startTranslation);
     connect(startTranslation, SIGNAL(triggered(bool)), this, SIGNAL(startRecognitionPressed()));
 
-    menu->addAction(startTranslation);
+    // Create custom QComboBox'es for language selection
+    comboBoxFrom = new LanguageQComboBox("From", this);
+    comboBoxTo = new LanguageQComboBox("To", this);
+    connect(comboBoxFrom, SIGNAL(activated(QString)), this, SLOT(chooseFromLang(QString)));
+    connect(comboBoxTo, SIGNAL(activated(QString)), this, SLOT(chooseToLang(QString)));
 
-    // used to simulate toggle effect when choose some language
-    menuLangFromGroup = new QActionGroup(this);
-    menuLangToGroup = new QActionGroup(this);
-
-    menu->addMenu(langFromMenu);
-    menu->addMenu(langToMenu);
-
-    menu->addSeparator();
-    menu->addAction("Settings...", settingsForm, SLOT(showForm()));
-
-    menu->addSeparator();
-    menu->addAction("Exit", qApp, SLOT(quit()));
-
-    // Fill a menu with all available languages
+    // Fill a combo boxes with with all available languages
     foreach (Lang language, Language::languages) {
         addLanguageToMenu(language.name);
     }
 
-    trayIcon->setContextMenu(menu);
+    // choose the correct value from saved settings
+    QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "Auto").toString();
+    QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "English").toString();
+    comboBoxFrom->setCurrentText(settingsLangFrom);
+    comboBoxTo->setCurrentText(settingsLangTo);
 
+    actionFrom = new QWidgetAction(0);
+    actionTo = new QWidgetAction(0);
+    actionFrom->setDefaultWidget(comboBoxFrom);
+    actionTo->setDefaultWidget(comboBoxTo);
+    menu->addAction(actionFrom);
+    menu->addAction(actionTo);
+
+    // Add Settings menu item
+    menu->addSeparator();
+    menu->addAction("Settings...", settingsForm, SLOT(showForm()));
+
+    // Add Exit menu item
+    menu->addSeparator();
+    menu->addAction("Exit", qApp, SLOT(quit()));
+
+    // Initialize menu
+    trayIcon->setContextMenu(menu);
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
 }
 
@@ -79,51 +91,28 @@ void Tray::showMessage(const QString &original, const QString &translation)
     translationResultForm->show();
 }
 
-void Tray::chooseFromLang()
+void Tray::chooseFromLang(QString name)
 {
-    QAction *action = qobject_cast<QAction*>(sender());
-    App::theApp()->settings()->setValue("/Settings/Languages/from", action->data().toString());
+    qDebug() << name;
+    App::theApp()->settings()->setValue("/Settings/Languages/from", name);
 }
 
-void Tray::chooseToLang()
+void Tray::chooseToLang(QString name)
 {
-    QAction *action = qobject_cast<QAction*>(sender());
-    App::theApp()->settings()->setValue("/Settings/Languages/to", action->data().toString());
+    qDebug() << name;
+    App::theApp()->settings()->setValue("/Settings/Languages/to", name) ;
 }
 
 void Tray::addLanguageToMenu(QString name)
 {
-    // receive saved settings
-    QString settingsLangFrom = App::theApp()->settings()->value("/Settings/Languages/from", "Auto").toString();
-    QString settingsLangTo = App::theApp()->settings()->value("/Settings/Languages/to", "English").toString();
-
-    // add item to the `Translate from` menu
-    QAction *actionFrom = new QAction(Language::getOriginalName(name));
-    actionFrom->setCheckable(true);
-    actionFrom->setData(QVariant(name));
-    actionFrom->setIcon(QIcon(Language::getIconPath(name)));
-    actionFrom->setChecked(name == settingsLangFrom);
-
-    langFromMenu->addAction(actionFrom);
-    menuLangFromGroup->addAction(actionFrom);
-    QObject::connect(actionFrom, SIGNAL(triggered()), this, SLOT(chooseFromLang()));
+    comboBoxFrom->addItem(QIcon(Language::getIconPath(name)), name, QVariant(name));
 
     // do not add Auto item to `Translate to` menu
     if (name == "Auto") return;
-
-    // add item to the `Translate to` menu
-    QAction *actionTo = new QAction(Language::getOriginalName(name));
-    actionTo->setCheckable(true);
-    actionTo->setData(QVariant(name));
-    actionTo->setIcon(QIcon(Language::getIconPath(name)));
-    actionTo->setChecked(name == settingsLangTo);
-
-    langToMenu->addAction(actionTo);
-    menuLangToGroup->addAction(actionTo);
-    QObject::connect(actionTo, SIGNAL(triggered()), this, SLOT(chooseToLang()));
+    comboBoxTo->addItem(QIcon(Language::getIconPath(name)), name, QVariant(name));
 }
 
 void Tray::showMenu()
 {
-    trayIcon->contextMenu()->exec(QCursor::pos());
+    trayIcon->contextMenu()->popup(QCursor::pos());
 }

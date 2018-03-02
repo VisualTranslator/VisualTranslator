@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     settingsform.cpp \
     language.cpp \
     translationresultform.cpp \
-    shortcutsetupform.cpp
+    shortcutsetupform.cpp \
+    languageqcombobox.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -35,7 +36,8 @@ HEADERS  += \
     settingsform.h \
     language.h \
     translationresultform.h \
-    shortcutsetupform.h
+    shortcutsetupform.h \
+    languageqcombobox.h
 
 FORMS    += \
     settingsform.ui \

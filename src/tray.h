@@ -5,6 +5,7 @@
 #include "app.h"
 #include "language.h"
 #include "settingsform.h"
+#include <languageqcombobox.h>
 #include <translationresultform.h>
 #include <ui_translationresultform.h>
 
@@ -14,21 +15,21 @@ class Tray : public QWidget
 private:
     void addLanguageToMenu(QString name);
     QAction *startTranslation;
-    QActionGroup *menuLangToGroup;
-    QActionGroup *menuLangFromGroup;
     QSystemTrayIcon *trayIcon;
     QMenu *menu;
-    QMenu *langToMenu;
-    QMenu *langFromMenu;
     SettingsForm *settingsForm;
+    QWidgetAction *actionFrom;
+    QWidgetAction *actionTo;
     TranslationResultForm *translationResultForm;
+    LanguageQComboBox *comboBoxFrom;
+    LanguageQComboBox *comboBoxTo;
 public:
     explicit Tray(QWidget *parent = 0);
 
 public slots:
     void showMessage(const QString &original, const QString &translation);
-    void chooseFromLang();
-    void chooseToLang();
+    void chooseFromLang(QString name);
+    void chooseToLang(QString name);
     void showMenu();
     void shortcutChange(QString shortcut);
 
