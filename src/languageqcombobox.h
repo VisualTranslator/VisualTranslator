@@ -8,10 +8,8 @@ class LanguageQComboBox : public QComboBox
 {
     Q_OBJECT
 public:
-    explicit LanguageQComboBox(QString direction, QWidget *parent = 0);
+    explicit LanguageQComboBox(QWidget *parent = 0);
 
-private:
-    QString direction;
 protected:
     virtual void paintEvent(QPaintEvent *ev);
 };

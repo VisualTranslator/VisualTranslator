@@ -24,27 +24,34 @@ public:
 
 private:
     Ui::TrayForm *ui;
+    SettingsForm *settingsForm;
     QSystemTrayIcon *trayIcon;
-    void addLanguageToMenu(QString name);
     QAction *startTranslation;
     QMenu *menu;
-    SettingsForm *settingsForm;
     QWidgetAction *actionFrom;
     QWidgetAction *actionTo;
     TranslationResultForm *translationResultForm;
     LanguageQComboBox *comboBoxFrom;
     LanguageQComboBox *comboBoxTo;
+protected:
+    void focusOutEvent(QFocusEvent * event)
+        {
+            close();
+        }
 
 public slots:
     void showMenu();
-    //void showMessage(const QString &original, const QString &translation);
-    //void chooseFromLang(QString name);
-    //void chooseToLang(QString name);
-    //void shortcutChange(QString shortcut);
+    void shortcutChange(QString shortcut);
+    void showMessage(const QString &original, const QString &translation);
 
 signals:
     void shortcutChanged(QString shortcut);
     void startRecognitionPressed();
+private slots:
+    void on_SettingsButton_clicked();
+    void on_startButton_clicked();
+    void on_translateFrom_activated(const QString &name);
+    void on_translateTo_activated(const QString &name);
 };
 
 #endif // TRAYFORM_H

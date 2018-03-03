@@ -1,6 +1,19 @@
-#translateFrom {
-    background-color: red;
-    border: 1px solid #efefef;
-    text-align: center;
+#startButton
+{
+    background-image: url(:/resources/start_button.png);
+    background-repeat: none;
+    background-color: none;
+    border: none;
 }
 
+#startButton:hover {
+    background-image: url(:/resources/start_button_hover.png);
+}
+
+#startButton:pressed {
+    background-image: url(:/resources/start_button_pressed.png);
+}
+
+#TrayForm {
+    background-color: #fff;
+}

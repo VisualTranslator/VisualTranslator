@@ -6,17 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>181</width>
-    <height>300</height>
+    <width>184</width>
+    <height>321</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: white;</string>
+   <string notr="true"/>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -32,21 +32,7 @@
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">#pushButton
-{
-background-image: url(:/resources/start_button.png);
-background-repeat: none;
-background-color: none;
-border: none;
-}
-
-#pushButton:hover {
-background-image: url(:/resources/start_button_hover.png);
-}
-
-#pushButton:pressed {
-background-image: url(:/resources/start_button_pressed.png);
-}</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
@@ -58,7 +44,7 @@ background-image: url(:/resources/start_button_pressed.png);
     </size>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="shortcut">
    <property name="geometry">
     <rect>
      <x>-10</x>
@@ -100,60 +86,53 @@ background-image: url(:/resources/start_button_pressed.png);
     <string notr="true">color: #B2B2B2;</string>
    </property>
    <property name="text">
-    <string>From</string>
+    <string>Translate</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QPushButton" name="SettingsButton">
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>230</y>
-     <width>181</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>8</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: #B2B2B2;</string>
-   </property>
-   <property name="text">
-    <string>To</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
      <y>280</y>
-     <width>47</width>
-     <height>13</height>
+     <width>181</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string>Settings</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="translateFrom">
+  <widget class="LanguageQComboBox" name="translateFrom">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>200</y>
-     <width>181</width>
-     <height>22</height>
+     <x>30</x>
+     <y>210</y>
+     <width>158</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="LanguageQComboBox" name="translateTo">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>240</y>
+     <width>158</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>LanguageQComboBox</class>
+   <extends>QComboBox</extends>
+   <header>languageqcombobox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
