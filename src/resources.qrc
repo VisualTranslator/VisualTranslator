@@ -16,5 +16,8 @@
         <file>resources/lang_icons/ara.png</file>
         <file>resources/fonts/OpenSans-Regular.ttf</file>
         <file>resources/lang_icons/auto.png</file>
+        <file>resources/start_button.png</file>
+        <file>resources/start_button_pressed.png</file>
+        <file>resources/start_button_hover.png</file>
     </qresource>
 </RCC>

@@ -15,7 +15,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     visualtranslator.cpp \
-    tray.cpp \
     app.cpp \
     screenarea.cpp \
     recognizer.cpp \
@@ -24,11 +23,11 @@ SOURCES += main.cpp \
     language.cpp \
     translationresultform.cpp \
     shortcutsetupform.cpp \
-    languageqcombobox.cpp
+    languageqcombobox.cpp \
+    trayform.cpp
 
 HEADERS  += \
     visualtranslator.h \
-    tray.h \
     app.h \
     screenarea.h \
     recognizer.h \
@@ -37,12 +36,14 @@ HEADERS  += \
     language.h \
     translationresultform.h \
     shortcutsetupform.h \
-    languageqcombobox.h
+    languageqcombobox.h \
+    trayform.h
 
 FORMS    += \
     settingsform.ui \
     translationresultform.ui \
-    shortcutsetupform.ui
+    shortcutsetupform.ui \
+    trayform.ui
 include(qhotkey.pri)
 
 

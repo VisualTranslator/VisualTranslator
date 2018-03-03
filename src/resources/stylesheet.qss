@@ -1,33 +1,6 @@
-QMenu {
-    background-color: #fff;
-    padding: 0;
+#translateFrom {
+    background-color: red;
+    border: 1px solid #efefef;
+    text-align: center;
 }
 
-QMenu::item {
-    padding: 5px 30px;
-}
-
-QMenu::item:checked {
-    background-color: #565656;
-    color: #fff;
-}
-
-QMenu::item:selected {
-    background-color: #8e8e8e;
-    color: #fff;
-}
-
-QMenu::separator {
-    height: 1px;
-    background: #dbdbdb;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-QMenu::icon {
-    margin-left: 15px;
-}
-
-QTextEdit {
-    border: 1px solid #a0a0a0;
-}

@@ -3,7 +3,7 @@
 
 #include <QtWidgets>
 #include <QHotkey>
-#include <tray.h>
+#include <trayform.h>
 #include <recognizer.h>
 #include <screenarea.h>
 #include <translator.h>
@@ -13,7 +13,7 @@ class VisualTranslator : public QWidget
     Q_OBJECT
 private:
     QHotkey *hotkey;
-    Tray *tray;
+    TrayForm *trayForm;
     Recognizer *recognizer;
     ScreenArea *screenArea;
     Translator *translator;

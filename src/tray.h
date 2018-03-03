@@ -13,16 +13,6 @@ class Tray : public QWidget
 {
     Q_OBJECT
 private:
-    void addLanguageToMenu(QString name);
-    QAction *startTranslation;
-    QSystemTrayIcon *trayIcon;
-    QMenu *menu;
-    SettingsForm *settingsForm;
-    QWidgetAction *actionFrom;
-    QWidgetAction *actionTo;
-    TranslationResultForm *translationResultForm;
-    LanguageQComboBox *comboBoxFrom;
-    LanguageQComboBox *comboBoxTo;
 public:
     explicit Tray(QWidget *parent = 0);
 

@@ -2,20 +2,12 @@
 
 Tray::Tray(QWidget *parent) : QWidget(parent)
 {
-    // Setup the tray icon
-    trayIcon = new QSystemTrayIcon(QIcon(":/resources/tray.png"));
-    trayIcon->setToolTip(QString("Visual Translator"));
-    trayIcon->show();
-
     // Setup all forms
     settingsForm = new SettingsForm(parent);
     connect(settingsForm, SIGNAL(shortcutChanged(QString)), this, SLOT(shortcutChange(QString)));
 
     translationResultForm = new TranslationResultForm(parent);
     translationResultForm->setWindowFlag(Qt::Popup);
-
-    // CREATE A MENU
-    menu = new QMenu(this);
 
     // create button to start recognition process
     QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
@@ -49,16 +41,10 @@ Tray::Tray(QWidget *parent) : QWidget(parent)
     menu->addAction(actionTo);
 
     // Add Settings menu item
-    menu->addSeparator();
     menu->addAction("Settings...", settingsForm, SLOT(showForm()));
 
     // Add Exit menu item
-    menu->addSeparator();
     menu->addAction("Exit", qApp, SLOT(quit()));
-
-    // Initialize menu
-    trayIcon->setContextMenu(menu);
-    connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(showMenu()));
 }
 
 void Tray::shortcutChange(QString shortcut)
@@ -108,9 +94,4 @@ void Tray::addLanguageToMenu(QString name)
     // do not add Auto item to `Translate to` menu
     if (name == "Auto") return;
     comboBoxTo->addItem(QIcon(Language::getIconPath(name)), name, QVariant(name));
-}
-
-void Tray::showMenu()
-{
-    trayIcon->contextMenu()->popup(QCursor::pos());
 }
