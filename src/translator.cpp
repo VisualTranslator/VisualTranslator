@@ -12,8 +12,9 @@ void Translator::translate(QString text)
     QString langTo = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/to", "English").toString());
 
     original = text;
+    QString encodedText = QString(QUrl(text).toEncoded()).remove("&");
 
-    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(text);
+    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(encodedText);
     QNetworkRequest request(url);
     qNetwork->get(request);
 }

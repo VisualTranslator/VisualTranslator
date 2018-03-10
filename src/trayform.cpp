@@ -40,7 +40,7 @@ TrayForm::TrayForm(QWidget *parent) :
     ui->translateFrom->setCurrentText(settingsLangFrom);
     ui->translateTo->setCurrentText(settingsLangTo);
 
-    connect(ui->translateFrom, SIGNAL(highlighted(QString)));
+    //connect(ui->translateFrom, SIGNAL(highlighted(QString)));
 }
 
 TrayForm::~TrayForm()
