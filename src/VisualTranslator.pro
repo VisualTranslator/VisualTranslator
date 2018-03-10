@@ -44,8 +44,8 @@ FORMS    += \
     translationresultform.ui \
     shortcutsetupform.ui \
     trayform.ui
-include(qhotkey.pri)
 
+include(vendor/vendor.pri)
 
 RESOURCES += \
     resources.qrc
