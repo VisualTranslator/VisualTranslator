@@ -52,6 +52,7 @@ private slots:
     void on_startButton_clicked();
     void on_translateFrom_activated(const QString &name);
     void on_translateTo_activated(const QString &name);
+    void on_ExitButton_clicked();
 };
 
 #endif // TRAYFORM_H

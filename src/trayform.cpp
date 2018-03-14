@@ -121,3 +121,8 @@ void TrayForm::showMessage(const QString &original, const QString &translation)
     translationResultForm->move(formPosition);
     translationResultForm->show();
 }
+
+void TrayForm::on_ExitButton_clicked()
+{
+    qApp->exit();
+}

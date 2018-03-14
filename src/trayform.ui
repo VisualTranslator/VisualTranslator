@@ -125,6 +125,26 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="ExitButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>315</y>
+     <width>180</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </widget>
+  <zorder>startButton</zorder>
+  <zorder>shortcut</zorder>
+  <zorder>label_2</zorder>
+  <zorder>SettingsButton</zorder>
+  <zorder>translateTo</zorder>
+  <zorder>translateFrom</zorder>
+  <zorder>ExitButton</zorder>
  </widget>
  <customwidgets>
   <customwidget>
