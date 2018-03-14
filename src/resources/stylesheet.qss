@@ -14,6 +14,40 @@
     background-image: url(:/resources/start_button_pressed.png);
 }
 
-#TrayForm {
+#TrayForm, #SettingsForm {
     background-color: #fff;
 }
+
+QComboBox {
+    background-color: #ededed;
+    border: 1px solid #ccc;
+    color: #474747;
+}
+
+QComboBox:hover {
+    background-color: #d3d3d3;
+}
+
+QComboBox::drop-down{
+    border: 0px;
+}
+
+QComboBox:item:selected {
+    padding-left: 20px;  /* move text right to make room for tick mark */
+    border: 2px solid black;
+}
+QComboBox:item:checked {
+    padding-left: 20px;  /* move text right to make room for tick mark */
+    font-weight: bold;
+}
+
+QPushButton {
+    background-color: #f2f2f2;
+    border: 1px solid #dbdbdb;
+    color: #474747;
+}
+
+QPushButton:hover {
+    background-color: #d3d3d3;
+}
+
