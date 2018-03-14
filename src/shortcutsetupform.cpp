@@ -16,7 +16,7 @@ ShortcutSetupForm::~ShortcutSetupForm()
 
 void ShortcutSetupForm::keyPressEvent(QKeyEvent *event)
 {
-    shortcut = QKeySequence(event->modifiers() + event->key()).toString().toLatin1();
+    shortcut = QKeySequence(event->modifiers() + event->nativeVirtualKey()).toString().toLatin1();
     ui->lineEdit->setText(shortcut);
 }
 
