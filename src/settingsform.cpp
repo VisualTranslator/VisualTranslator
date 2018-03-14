@@ -8,6 +8,18 @@ SettingsForm::SettingsForm(QWidget *parent) :
     ui->setupUi(this);
     ui->lineEdit->installEventFilter(this);
     this->setWindowFlags(Qt::Window | Qt::WindowTitleHint | Qt::CustomizeWindowHint);
+
+    QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
+    ui->lineEdit->setText(shortcut);
+
+    if (App::theApp()->settings()->value("/Settings/Autorun/Flag", "0").toString() == QString("0"))
+    {
+        ui->checkBox->setChecked(false);
+    }
+    else
+    {
+       ui->checkBox->setChecked(true);
+    }
 }
 
 SettingsForm::~SettingsForm()
@@ -24,22 +36,6 @@ bool SettingsForm::eventFilter(QObject* object, QEvent* event)
         return false; // lets the event continue to the edit
     }
     return false;
-}
-
-void SettingsForm::showForm()
-{
-    QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
-    ui->lineEdit->setText(shortcut);
-
-    if (App::theApp()->settings()->value("/Settings/Autorun/Flag", "0").toString() == QString("0"))
-    {
-        ui->checkBox->setChecked(false);
-    }
-    else
-    {
-       ui->checkBox->setChecked(true);
-    }
-    this->show();
 }
 
 void SettingsForm::closeEvent(QCloseEvent *event)

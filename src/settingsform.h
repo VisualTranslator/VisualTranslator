@@ -22,7 +22,6 @@ protected:
     bool eventFilter(QObject *obj, QEvent *ev);
 
 public slots:
-    void showForm();
     void shortcutChange(QString shortcut);
 
 private slots:
