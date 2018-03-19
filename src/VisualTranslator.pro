@@ -85,7 +85,11 @@ defineTest(copyToDestdir) {
 
 win32 {
     # Run windeployqt to copy all additional dependencies
-    QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../VisualTranslatorDebug $$escape_expand(\\n\\t)
+    CONFIG(debug, debug|release) {
+        QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../VisualTranslatorDebug $$escape_expand(\\n\\t)
+    } else {
+        QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../VisualTranslatorRelease $$escape_expand(\\n\\t)
+    }
 
     # Copy all the dll's files
     copyToDestdir($$files($$PWD/../vendor/dll/*), "")
