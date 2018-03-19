@@ -52,19 +52,19 @@ RESOURCES += \
 
 DISTFILES +=
 
-unix|win32: LIBS += -L$$PWD/'lib/' -lleptonica-1.74.4
-unix|win32: LIBS += -L$$PWD/'lib/' -ltesseract400
+unix|win32: LIBS += -L$$PWD/'../vendor/lib/' -lleptonica-1.74.4
+unix|win32: LIBS += -L$$PWD/'../vendor/lib/' -ltesseract400
 
-INCLUDEPATH += $$PWD/'include/leptonica'
-INCLUDEPATH += $$PWD/'include/tesseract'
+INCLUDEPATH += $$PWD/'../vendor/include/leptonica'
+INCLUDEPATH += $$PWD/'../vendor/include/tesseract'
 
-DEPENDPATH += $$PWD/'include/leptonica'
-DEPENDPATH += $$PWD/'include/tesseract'
+DEPENDPATH += $$PWD/'../include/leptonica'
+DEPENDPATH += $$PWD/'../include/tesseract'
 
 CONFIG(debug, debug|release) {
-    DESTDIR = $$OUT_PWD/../../VisualTranslatorDebug
+    DESTDIR = $$OUT_PWD/../VisualTranslatorDebug
 } else {
-    DESTDIR = $$OUT_PWD/../../VisualTranslatorRelease
+    DESTDIR = $$OUT_PWD/../VisualTranslatorRelease
 }
 
 # Copies the given files to the destination directory
@@ -85,10 +85,10 @@ defineTest(copyToDestdir) {
 
 win32 {
     # Run windeployqt to copy all additional dependencies
-    QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../../VisualTranslatorDebug $$escape_expand(\\n\\t)
+    QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../VisualTranslatorDebug $$escape_expand(\\n\\t)
 
     # Copy all the dll's files
-    copyToDestdir($$files($$PWD/dll/*), "")
+    copyToDestdir($$files($$PWD/../vendor/dll/*), "")
 
     # Create tessdata directory and copy all tessdata files
     QMAKE_POST_LINK += $${QMAKE_MKDIR} $$shell_path($${DESTDIR}/tessdata) $$escape_expand(\\n\\t)
