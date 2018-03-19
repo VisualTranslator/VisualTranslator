@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Package>
+    <DisplayName>VisualTranslator core</DisplayName>
+    <Description>Main component</Description>
+    <Version>0.1.0</Version>
+    <Name>com.semanser.visualtranslator</Name>
+    <ReleaseDate>2018-03-19</ReleaseDate>
+    <ForcedInstallation>true</ForcedInstallation>
+    <RequiresAdminRights>true</RequiresAdminRights>
+</Package>

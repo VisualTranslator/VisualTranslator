@@ -45,8 +45,6 @@ FORMS    += \
     shortcutsetupform.ui \
     trayform.ui
 
-include(vendor/vendor.pri)
-
 RESOURCES += \
     resources.qrc
 
@@ -88,7 +86,7 @@ win32 {
     CONFIG(debug, debug|release) {
         QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../VisualTranslatorDebug $$escape_expand(\\n\\t)
     } else {
-        QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../VisualTranslatorRelease $$escape_expand(\\n\\t)
+        QMAKE_POST_LINK += $$(QTDIR)/bin/windeployqt $$OUT_PWD/../VisualTranslatorRelease --release --no-system-d3d-compiler --compiler-runtime --no-opengl-sw --no-angle $$escape_expand(\\n\\t)
     }
 
     # Copy all the dll's files
@@ -99,4 +97,8 @@ win32 {
     copyToDestdir($$files($$PWD/tessdata/*), "tessdata/")    # Run windeployqt to add all additional dependencies
 }
 
+# Load qpm dependencies
+include(vendor/vendor.pri)
 
+# Build the installer
+include(installer/installer.pri)
