@@ -25,6 +25,7 @@ Makefile*
 VisualTranslatorDebug
 VisualTranslatorRelease
 VisualTranslatorInstaller
+VisualTranslatorRepository
 src/installer/**/data/**
 
 # QtCreator
