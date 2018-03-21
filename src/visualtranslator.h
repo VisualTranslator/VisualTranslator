@@ -17,6 +17,7 @@ private:
     Recognizer *recognizer;
     ScreenArea *screenArea;
     Translator *translator;
+    void checkForUpdates();
 
 public:
     explicit VisualTranslator(QWidget *parent = 0);

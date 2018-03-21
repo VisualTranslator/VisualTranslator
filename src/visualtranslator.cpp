@@ -2,6 +2,8 @@
 
 VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 {
+    this->checkForUpdates();
+
     QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
 
     // Initialize related modules
@@ -29,4 +31,17 @@ void VisualTranslator::changeShortcut(QString shortcut)
     // create a new hotkey
     hotkey = new QHotkey(QKeySequence(shortcut), true, this);
     QObject::connect(hotkey, SIGNAL(activated()), screenArea, SLOT(show()));
+}
+
+void VisualTranslator::checkForUpdates() {
+    // Check for updates only in a release mode
+    if (!QLibraryInfo::isDebugBuild()) {
+        int exitCode = QProcess::execute("maintenancetool", QStringList("--checkupdates"));
+
+        // updates found
+        if (exitCode == 0) {
+            QProcess::execute("maintenancetool", QStringList("--silentUpdate"));
+        }
+
+    }
 }
