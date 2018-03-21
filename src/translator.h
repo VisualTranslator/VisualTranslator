@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QtWidgets>
 #include <QNetworkAccessManager>
+#include <QNetworkConfigurationManager>
 #include <QNetworkReply>
 #include <QSslError>
 #include "app.h"
@@ -22,6 +23,7 @@ public:
 
 signals:
     void translated(QString original, QString result);
+    void error(QString message);
 
 public slots:
     void translate(QString text);

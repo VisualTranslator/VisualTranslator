@@ -41,6 +41,7 @@ protected:
 
 public slots:
     void showMenu();
+    void showError(QString);
     void shortcutChange(QString shortcut);
     void showMessage(const QString &original, const QString &translation);
 

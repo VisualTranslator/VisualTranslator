@@ -122,6 +122,11 @@ void TrayForm::showMessage(const QString &original, const QString &translation)
     translationResultForm->show();
 }
 
+void TrayForm::showError(QString message)
+{
+    trayIcon->showMessage("VisualTranslator Error", message);
+}
+
 void TrayForm::on_ExitButton_clicked()
 {
     qApp->exit();

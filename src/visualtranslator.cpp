@@ -21,6 +21,9 @@ VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
     QObject::connect(recognizer, SIGNAL(recognized(QString)), translator, SLOT(translate(QString)));
     QObject::connect(translator, SIGNAL(translated(QString, QString)), trayForm, SLOT(showMessage(QString,QString)));
     QObject::connect(trayForm, SIGNAL(shortcutChanged(QString)), this, SLOT(changeShortcut(QString)));
+
+    // Errors
+    QObject::connect(translator, SIGNAL(error(QString)), trayForm, SLOT(showError(QString)));
 }
 
 void VisualTranslator::changeShortcut(QString shortcut)
@@ -42,6 +45,5 @@ void VisualTranslator::checkForUpdates() {
         if (exitCode == 0) {
             QProcess::execute("maintenancetool", QStringList("--silentUpdate"));
         }
-
     }
 }

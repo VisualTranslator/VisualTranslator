@@ -8,15 +8,20 @@ Translator::Translator(QObject *parent) : QObject(parent)
 
 void Translator::translate(QString text)
 {
-    QString langFrom = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/from", "Auto").toString());
-    QString langTo = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/to", "English").toString());
+    QNetworkConfigurationManager *configManager = new QNetworkConfigurationManager();
+    if (!configManager->isOnline()) {
+        emit error("No Internet connection");
+    } else {
+        QString langFrom = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/from", "Auto").toString());
+        QString langTo = Language::getGoogleName(App::theApp()->settings()->value("Settings/Languages/to", "English").toString());
 
-    original = text;
-    QString encodedText = QString(QUrl(text).toEncoded()).remove("&");
+        original = text;
+        QString encodedText = QString(QUrl(text).toEncoded()).remove("&");
 
-    QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(encodedText);
-    QNetworkRequest request(url);
-    qNetwork->get(request);
+        QString url = QString("http://translate.googleapis.com/translate_a/single?client=gtx&sl=%1&tl=%2&dt=t&q=%3").arg(langFrom).arg(langTo).arg(encodedText);
+        QNetworkRequest request(url);
+        qNetwork->get(request);
+    }
 }
 
 void Translator::handleNetworkData(QNetworkReply *reply)
