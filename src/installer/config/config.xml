@@ -13,7 +13,7 @@
     <TargetDir>@ApplicationsDirX64@/VisualTranslator</TargetDir>
     <RemoteRepositories>
         <Repository>
-            <Url>http://www.your-repo-location/packages/</Url>
+            <Url>http://vtranslator.com/repository</Url>
         </Repository>
     </RemoteRepositories>
 </Installer>
