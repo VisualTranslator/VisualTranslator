@@ -25,6 +25,9 @@ win32 {
         # Create a directory for installer
         QMAKE_POST_LINK += $${QMAKE_MKDIR} $$shell_path($$INSTALLER_PATH) $$escape_expand(\\n\\t)
         # Create installer with binarycreator
-        QMAKE_POST_LINK += $$(QTDIR)/../../Tools/QtInstallerFramework/3.0/bin/binarycreator --offline-only -c $$PWD/config/config.xml -p $$PWD/packages $$INSTALLER_PATH $$escape_expand(\\n\\t)
+        QMAKE_POST_LINK += $$(QTDIR)/../../Tools/QtInstallerFramework/3.0/bin/binarycreator --online-only -c $$PWD/config/config.xml -p $$PWD/packages $$INSTALLER_PATH $$escape_expand(\\n\\t)
+
+        # Create a repository
+        QMAKE_POST_LINK += $$(QTDIR)/../../Tools/QtInstallerFramework/3.0/bin/repogen -p $$PWD/packages -i com.semanser.visualtranslator --update $$OUT_PWD/../VisualTranslatorRepository
     }
 }
