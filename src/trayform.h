@@ -36,6 +36,7 @@ private:
 protected:
     void focusOutEvent(QFocusEvent * event)
         {
+            Q_UNUSED(event);
             close();
         }
 

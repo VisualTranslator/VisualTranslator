@@ -7,6 +7,8 @@ LanguageQComboBox::LanguageQComboBox(QWidget *parent): QComboBox(parent)
 
 void LanguageQComboBox::paintEvent(QPaintEvent *ev)
 {
+    Q_UNUSED(ev);
+
     QStylePainter painter(this);
     painter.setPen(palette().color(QPalette::Text));
 
