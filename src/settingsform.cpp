@@ -12,6 +12,16 @@ SettingsForm::SettingsForm(QWidget *parent) :
     QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
     ui->lineEdit->setText(shortcut);
 
+    // If Autorun/Flag do not set - it's means that it's a first app run
+    // add to the autorun
+    if (App::theApp()->settings()->value("/Settings/Autorun/Flag").toString() == "")
+    {
+        App::theApp()->settings()->setValue("/Settings/Autorun/Flag", QString("1"));
+
+        QSettings settings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
+        settings.setValue("VisualTranslator", QCoreApplication::applicationFilePath().replace('/', '\\'));
+    }
+
     if (App::theApp()->settings()->value("/Settings/Autorun/Flag", "0").toString() == QString("0"))
     {
         ui->checkBox->setChecked(false);
