@@ -44,6 +44,10 @@
 > To change standard application key combination, press on the tray icon and choose Settings.
 
 ## Team
+Andriy Semenets (https://github.com/semanser)
+
+Oleksandr Kushnir (https://github.com/kushnir95)
+
 ## FAQ
 ## Support
 ## Donations
