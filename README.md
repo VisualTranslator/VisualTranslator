@@ -9,10 +9,10 @@
 - [Installation](#installation)
 - [Features](#features)
 - [Usage](#usage)
-- [Team](#team)
 - [FAQ](#faq)
+- [Team](#team)
 - [Support](#support)
-- [Donation](#donation)
+- [Donations](#donations)
 - [License](#license)
 
 ## Installation
@@ -43,12 +43,21 @@
 
 > To change standard application key combination, press on the tray icon and choose Settings.
 
-## Team
-Andriy Semenets (https://github.com/semanser)
-
-Oleksandr Kushnir (https://github.com/kushnir95)
-
 ## FAQ
+### How it recognizes selected text?
+Under the hood VisualTranslator uses [tesseract](https://github.com/tesseract-ocr/tesseract) to recognize text on the selected area.
+
+### How it uses Neural Networks?
+The latest version of Tesseract OCR engine is based on LSTM neural networks. [More info here.](https://github.com/tesseract-ocr/tesseract/wiki/4.0-with-LSTM)
+
+### What languages are supported?
+List of all supported languages can be found [here](https://github.com/VisualTranslator/VisualTranslator/blob/master/supported_languages.md).
+
+## Team
+* Andriy Semenets (https://github.com/semanser)
+* Oleksandr Kushnir (https://github.com/kushnir95)
+
 ## Support
 ## Donations
 ## License
+
