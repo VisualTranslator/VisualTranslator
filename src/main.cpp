@@ -6,7 +6,11 @@
 int main(int argc, char *argv[])
 {
     App a(argc, argv, "VisualTranslator", "VisualTranslator");
+
     VisualTranslator *pVisualTranslator = new VisualTranslator;
 
-    return a.exec();
+    // Run the program only if it not will be updated
+    if (!pVisualTranslator->willBeUpdated()) {
+        return a.exec();
+    }
 }

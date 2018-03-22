@@ -17,10 +17,10 @@ private:
     Recognizer *recognizer;
     ScreenArea *screenArea;
     Translator *translator;
-    void checkForUpdates();
 
 public:
     explicit VisualTranslator(QWidget *parent = 0);
+    bool willBeUpdated();
 
 public slots:
     void changeShortcut(QString shortcut);

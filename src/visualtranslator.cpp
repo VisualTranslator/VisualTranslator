@@ -1,9 +1,8 @@
 #include "visualtranslator.h"
+#include "app.h"
 
 VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
 {
-    this->checkForUpdates();
-
     QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
 
     // Initialize related modules
@@ -36,14 +35,24 @@ void VisualTranslator::changeShortcut(QString shortcut)
     QObject::connect(hotkey, SIGNAL(activated()), screenArea, SLOT(show()));
 }
 
-void VisualTranslator::checkForUpdates() {
+bool VisualTranslator::willBeUpdated()
+{
     // Check for updates only in a release mode
     if (!QLibraryInfo::isDebugBuild()) {
         int exitCode = QProcess::execute("maintenancetool", QStringList("--checkupdates"));
 
         // updates found
         if (exitCode == 0) {
-            QProcess::execute("maintenancetool", QStringList("--silentUpdate"));
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, "VisualTranslator Update", "An update for VisualTranslator is available. Do you wish to install it now?",
+                                          QMessageBox::Yes|QMessageBox::No);
+
+            // return true only if user want to update the program
+            if (reply == QMessageBox::Yes) {
+                QProcess::execute("maintenancetool", QStringList("--updater"));
+                return true;
+            }
         }
     }
+    return false;
 }
