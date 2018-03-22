@@ -17,15 +17,11 @@
 
 ## Installation
   The installation process is absolutely similar for Windows, macOS, and Linux.
-  ### Download
-  The latest build for your operation system can be downloaded from [vtranslator.com/download](vtranslator.com/download)
+  
+  **Download installer and follow the instructions inside.** [vtranslator.com/download](vtranslator.com/download)
  
   > If you want to download the specific build, visit [Github Releases page](https://github.com/VisualTranslator/VisualTranslator/releases)
-  
-  ### Install
-  Open downloaded installer and follow the instructions inside. 
-  
-  After the installation completed make sure icon added in the tray of your operating system.
+
   [TODO] add screenshots of tray icons in different OS
   
 ## Features
