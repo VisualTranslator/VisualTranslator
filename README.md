@@ -17,7 +17,7 @@
 
 ## Installation
   The installation process is absolutely similar for Windows, macOS, and Linux.
-  ### Download installer
+  ### Download
   The latest build for your operation system can be downloaded from [vtranslator.com/download](vtranslator.com/download)
  
   > If you want to download the specific build, visit [Github Releases page](https://github.com/VisualTranslator/VisualTranslator/releases)
@@ -29,6 +29,13 @@
   [TODO] add screenshots of tray icons in different OS
   
 ## Features
+* Select & Translate in any software
+* Screen Recognition AI
+* More than 125 languages
+* Fast and Cross-platform
+* Written in C++ and avaliable for Windows, macOS and Linux.
+* Free
+
 ## Usage
 ## Team
 ## FAQ
