@@ -37,6 +37,12 @@
 * Free
 
 ## Usage
+* Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> or activate VisualTranslator from tray icon.
+* Select screen area and release mouse button.
+* Voila! Translation will appear near the tray icon.
+
+> To change standard application key combination, press on the tray icon and choose Settings.
+
 ## Team
 ## FAQ
 ## Support
