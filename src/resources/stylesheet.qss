@@ -40,14 +40,3 @@ QComboBox:item:checked {
     padding-left: 20px;  /* move text right to make room for tick mark */
     font-weight: bold;
 }
-
-QPushButton {
-    background-color: #f2f2f2;
-    border: 1px solid #dbdbdb;
-    color: #474747;
-}
-
-QPushButton:hover {
-    background-color: #d3d3d3;
-}
-
