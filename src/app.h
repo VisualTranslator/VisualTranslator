@@ -10,8 +10,8 @@ private:
     QSettings *pSettings;
 public:
     App(int& argc, char** argv, const QString& strOrg, const QString& strAppName);
-    static App* theApp();
     QSettings* settings();
+    static App* theApp();
 };
 
 #endif // APP_H

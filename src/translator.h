@@ -22,12 +22,12 @@ public:
     explicit Translator(QObject *parent = 0);
 
 signals:
-    void translated(QString original, QString result);
     void error(QString message);
+    void translated(QString original, QString result);
 
 public slots:
-    void translate(QString text);
     void handleNetworkData(QNetworkReply *reply);
+    void translate(QString text);
 };
 
 #endif // TRANSLATOR_H

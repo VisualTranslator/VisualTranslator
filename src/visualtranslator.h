@@ -13,10 +13,10 @@ class VisualTranslator : public QWidget
     Q_OBJECT
 private:
     QHotkey *hotkey;
-    TrayForm *trayForm;
     Recognizer *recognizer;
     ScreenArea *screenArea;
     Translator *translator;
+    TrayForm *trayForm;
 
 public:
     explicit VisualTranslator(QWidget *parent = 0);

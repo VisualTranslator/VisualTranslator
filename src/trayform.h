@@ -23,16 +23,16 @@ public:
     ~TrayForm();
 
 private:
-    Ui::TrayForm *ui;
-    SettingsForm *settingsForm;
-    QSystemTrayIcon *trayIcon;
-    QAction *startTranslation;
-    QMenu *menu;
-    QWidgetAction *actionFrom;
-    QWidgetAction *actionTo;
-    TranslationResultForm *translationResultForm;
     LanguageQComboBox *comboBoxFrom;
     LanguageQComboBox *comboBoxTo;
+    QAction *startTranslation;
+    QMenu *menu;
+    QSystemTrayIcon *trayIcon;
+    QWidgetAction *actionFrom;
+    QWidgetAction *actionTo;
+    SettingsForm *settingsForm;
+    TranslationResultForm *translationResultForm;
+    Ui::TrayForm *ui;
 protected:
     void focusOutEvent(QFocusEvent * event)
         {
@@ -41,20 +41,20 @@ protected:
         }
 
 public slots:
-    void showMenu();
-    void showError(QString);
     void shortcutChange(QString shortcut);
+    void showError(QString);
+    void showMenu();
     void showMessage(const QString &original, const QString &translation);
 
 signals:
     void shortcutChanged(QString shortcut);
     void startRecognitionPressed();
 private slots:
+    void on_ExitButton_clicked();
     void on_SettingsButton_clicked();
     void on_startButton_clicked();
     void on_translateFrom_activated(const QString &name);
     void on_translateTo_activated(const QString &name);
-    void on_ExitButton_clicked();
 };
 
 #endif // TRAYFORM_H

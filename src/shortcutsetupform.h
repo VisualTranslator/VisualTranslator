@@ -27,8 +27,8 @@ private slots:
     void on_saveButton_clicked();
 
 private:
-    Ui::ShortcutSetupForm *ui;
     QString shortcut;
+    Ui::ShortcutSetupForm *ui;
 };
 
 #endif // SHORTCUTSETUPFORM_H

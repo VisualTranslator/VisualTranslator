@@ -33,8 +33,8 @@ signals:
     void shortcutChanged(QString shortcut);
 
 private:
-    Ui::SettingsForm *ui;
     ShortcutSetupForm *shortcutSetupForm;
+    Ui::SettingsForm *ui;
 };
 
 #endif // SETTINGSFORM_H

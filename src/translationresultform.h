@@ -13,8 +13,8 @@ class TranslationResultForm : public QWidget
 
 public:
     explicit TranslationResultForm(QWidget *parent = 0);
-    ~TranslationResultForm();
     Ui::TranslationResultForm *ui;
+    ~TranslationResultForm();
 
 private:
 };
