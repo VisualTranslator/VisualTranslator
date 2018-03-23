@@ -61,8 +61,12 @@ void ScreenArea::paintEvent(QPaintEvent *ev)
 
     QPainter painter(this);
     painter.drawPixmap(0, 0, screenshot);
-    painter.setPen(QPen(QColor(11, 164, 236), 2, Qt::DashLine));
-    if (isActive) painter.drawRect(QRect(start, end));
+    painter.setPen(QPen(QColor(66, 134, 244), 2, Qt::SolidLine));
+    if (isActive) {
+        painter.drawRect(QRect(start, end));
+        painter.fillRect(QRect(start, end), QBrush(QColor(66, 134, 244, 50)));
+
+    }
 }
 
 void ScreenArea::keyPressEvent(QKeyEvent *ev)
