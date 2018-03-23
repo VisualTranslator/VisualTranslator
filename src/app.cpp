@@ -2,6 +2,10 @@
 
 App::App(int& argc, char** argv, const QString& strOrg, const QString& strAppName): QApplication(argc, argv), pSettings(0)
 {
+    // Do not quit app when close last window
+    // needed for macOS
+    this->setQuitOnLastWindowClosed(false);
+
     setOrganizationName(strOrg);
     setApplicationName(strAppName);
     pSettings = new QSettings(strOrg, strAppName, this);

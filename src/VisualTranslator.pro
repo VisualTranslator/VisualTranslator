@@ -50,8 +50,11 @@ RESOURCES += \
 
 DISTFILES +=
 
-unix|win32: LIBS += -L$$PWD/'../vendor/lib/' -lleptonica-1.74.4
-unix|win32: LIBS += -L$$PWD/'../vendor/lib/' -ltesseract400
+win32: LIBS += -L$$PWD/'../vendor/lib/' -lleptonica-1.74.4
+win32: LIBS += -L$$PWD/'../vendor/lib/' -ltesseract400
+
+unix: LIBS += -L/usr/local/lib -ltesseract
+unix: LIBS += -L/usr/local/lib -llept
 
 INCLUDEPATH += $$PWD/'../vendor/include/leptonica'
 INCLUDEPATH += $$PWD/'../vendor/include/tesseract'

@@ -106,10 +106,10 @@ void TrayForm::showMessage(const QString &original, const QString &translation)
     // search for the correct position for the translationResultForm
     int screenWidth = QApplication::desktop()->screenGeometry().width();
     int screenHeight = QApplication::desktop()->screenGeometry().height();
+
     QRect trayIconGeometry = trayIcon->geometry();
     QPoint formPosition = QPoint(trayIconGeometry.x(), trayIconGeometry.y());
 
-    // TODO check with non-default dock position (left, right, top)
     if (formPosition.x() + translationResultForm->width() > screenWidth - 100) {
         formPosition.setX(screenWidth - translationResultForm->width());
     }

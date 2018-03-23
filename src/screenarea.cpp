@@ -3,12 +3,13 @@
 ScreenArea::ScreenArea(QWidget *parent): QLabel(parent), isActive(false)
 {
     this->setCursor(QPixmap(":/resources/cursor.png"));
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 void ScreenArea::show()
 {
     screenshot = QPixmap::grabWindow(QApplication::desktop()->winId());
-    showFullScreen();
+    this->showFullScreen();
     isActive = false;
 }
 
@@ -44,7 +45,7 @@ void ScreenArea::mouseReleaseEvent(QMouseEvent *ev)
         rect.setBottom(start.y());
     }
     cropped =  screenshot.copy(rect);
-    this->hide();
+    this->close();
     emit selected(cropped);
 }
 
@@ -68,6 +69,6 @@ void ScreenArea::keyPressEvent(QKeyEvent *ev)
 {
     if (ev->key() == Qt::Key_Escape)
     {
-        this->hide();
+        this->close();
     }
 }

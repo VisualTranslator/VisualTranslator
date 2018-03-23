@@ -1,5 +1,10 @@
 {
+  "name": "",
+  "description": "",
   "dependencies": [
     "de.skycoder42.qhotkey@1.2.1"
-  ]
+  ],
+  "license": "NONE",
+  "pri_filename": "",
+  "webpage": ""
 }
