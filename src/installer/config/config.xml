@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Installer>
     <Name>VisualTranslator</Name>
-    <Version>0.1.3</Version>
+    <Version>0.1.4</Version>
     <Title>VisualTranslator Installation</Title>
     <Publisher>semanser</Publisher>
     <ProductUrl>http://vtranslator.com</ProductUrl>
