@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/VisualTranslator/visualtranslator.github.io/master/img/logo.png"/>
+  <img alt="Logo" width="350px" src="https://raw.githubusercontent.com/VisualTranslator/visualtranslator.github.io/master/img/logo.png"/>
 </p>
 
 > Tool for recognition and translation text.
