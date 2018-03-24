@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/VisualTranslator/visualtranslator.github.io/master/img/logo.png"/>
+  <img alt="Logo" width="350px" src="https://raw.githubusercontent.com/VisualTranslator/visualtranslator.github.io/master/img/logo.png"/>
 </p>
 
 > Tool for recognition and translation text.
@@ -63,4 +63,5 @@ List of all supported languages can be found [here](https://github.com/VisualTra
 
 ## Donations
 ## License
+This software use [GPL v3](https://github.com/VisualTranslator/VisualTranslator/blob/master/LICENSE) license.
 
