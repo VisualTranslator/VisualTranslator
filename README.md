@@ -10,6 +10,7 @@
 - [Features](#features)
 - [Usage](#usage)
 - [FAQ](#faq)
+- [Build](#build)
 - [Team](#team)
 - [Support](#support)
 - [Donations](#donations)
@@ -48,6 +49,14 @@ The latest version of Tesseract OCR engine is based on LSTM neural networks. [Mo
 
 ### What languages are supported?
 List of all supported languages can be found [here](https://github.com/VisualTranslator/VisualTranslator/blob/master/supported_languages.md).
+
+## Build
+Project is compiled successfully with `MSVC2017 x64` on Windows and `Apple Clang x86_64` on macOS.
+
+1. Install [qpm](qpm.io) package manager.
+2. Run `qpm install` in src folder to install all dependencies.
+3. Open `VisualTranslator.pro` in QtCreator.
+3. Run `Build`.
 
 ## Team
 * Andriy Semenets (https://github.com/semanser)
