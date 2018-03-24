@@ -24,7 +24,7 @@ SOURCES += main.cpp \
     translationresultform.cpp \
     shortcutsetupform.cpp \
     languageqcombobox.cpp \
-    trayform.cpp
+    tray.cpp
 
 HEADERS  += \
     visualtranslator.h \
@@ -37,13 +37,12 @@ HEADERS  += \
     translationresultform.h \
     shortcutsetupform.h \
     languageqcombobox.h \
-    trayform.h
+    tray.h
 
 FORMS    += \
     settingsform.ui \
     translationresultform.ui \
-    shortcutsetupform.ui \
-    trayform.ui
+    shortcutsetupform.ui
 
 RESOURCES += \
     resources.qrc

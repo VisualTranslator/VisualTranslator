@@ -33,7 +33,7 @@
 * Free
 
 ## Usage
-* Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> or activate VisualTranslator from tray icon.
+* Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> on Windows or <kbd>CMD</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> on macOS (or activate VisualTranslator from tray icon)
 * Select screen area and release mouse button.
 * Voila! Translation will appear near the tray icon.
 
