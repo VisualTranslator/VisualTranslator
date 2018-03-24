@@ -1,17 +1,7 @@
 #include "tray.h"
-#include "ui_trayform.h"
 
-Tray::Tray(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::TrayForm)
+Tray::Tray()
 {
-    // Setup initial UI state
-    ui->setupUi(this);
-    this->setWindowFlags(Qt::Popup);
-
-    QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
-    ui->shortcut->setText("or press " + shortcut);
-
     // Setup the tray icon
     trayIcon = new QSystemTrayIcon(QIcon(":/resources/logo_256_256.png"));
     trayIcon->setToolTip(QString("Visual Translator"));
@@ -21,15 +11,16 @@ Tray::Tray(QWidget *parent) :
     settingsForm = new SettingsForm();
     connect(settingsForm, SIGNAL(shortcutChanged(QString)), this, SLOT(shortcutChange(QString)));
 
-    translationResultForm = new TranslationResultForm(parent);
+    translationResultForm = new TranslationResultForm();
     translationResultForm->setWindowFlag(Qt::Popup);
 
     // Create a menu
-    menu = new QMenu(this);
+    menu = new QMenu();
     langFromMenu = new QMenu("Translate from", menu);
     langToMenu = new QMenu("Translate to", menu);
 
     startTranslation = new QAction(tr("&Start translation"), this);
+    QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
     startTranslation->setShortcut(QKeySequence(shortcut));
     connect(startTranslation, SIGNAL(triggered(bool)), this, SIGNAL(startRecognitionPressed()));
     menu->addAction(startTranslation);
@@ -83,20 +74,9 @@ Tray::Tray(QWidget *parent) :
     trayIcon->setContextMenu(menu);
 }
 
-Tray::~Tray()
-{
-    delete ui;
-}
-
 void Tray::on_SettingsButton_clicked()
 {
     settingsForm->show();
-}
-
-void Tray::on_startButton_clicked()
-{
-    this->hide();
-    emit startRecognitionPressed();
 }
 
 void Tray::chooseLanguageFrom()
@@ -114,7 +94,6 @@ void Tray::chooseLanguageTo()
 
 void Tray::shortcutChange(QString shortcut)
 {
-    ui->shortcut->setText("or press " + shortcut);
     emit shortcutChanged(shortcut);
 }
 

@@ -10,17 +10,12 @@
 #include <translationresultform.h>
 #include <ui_translationresultform.h>
 
-namespace Ui {
-class TrayForm;
-}
-
-class Tray : public QWidget
+class Tray : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Tray(QWidget *parent = 0);
-    ~Tray();
+    explicit Tray();
 
 private:
     LanguageQComboBox *comboBoxFrom;
@@ -30,7 +25,6 @@ private:
     QSystemTrayIcon *trayIcon;
     SettingsForm *settingsForm;
     TranslationResultForm *translationResultForm;
-    Ui::TrayForm *ui;
     QActionGroup *menuLangToGroup;
     QActionGroup *menuLangFromGroup;
     QMenu *langToMenu;
@@ -46,7 +40,6 @@ signals:
     void startRecognitionPressed();
 private slots:
     void on_SettingsButton_clicked();
-    void on_startButton_clicked();
     void chooseLanguageFrom();
     void chooseLanguageTo();
 };
