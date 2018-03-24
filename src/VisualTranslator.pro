@@ -51,6 +51,7 @@ DISTFILES +=
 
 win32: LIBS += -L$$PWD/'../vendor/lib/' -lleptonica-1.74.4
 win32: LIBS += -L$$PWD/'../vendor/lib/' -ltesseract400
+win32: RC_ICONS += $$PWD/resources/favicon.ico
 
 unix: LIBS += -L/usr/local/lib -ltesseract
 unix: LIBS += -L/usr/local/lib -llept
