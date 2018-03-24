@@ -3,6 +3,8 @@
     <Name>VisualTranslator</Name>
     <Version>0.1.4</Version>
     <Title>VisualTranslator Installation</Title>
+    <InstallerApplicationIcon>favicon</InstallerApplicationIcon>
+    <InstallerWindowIcon>favicon</InstallerWindowIcon>
     <Publisher>semanser</Publisher>
     <ProductUrl>http://vtranslator.com</ProductUrl>
     <RunProgram>@TargetDir@/visualtranslator.exe</RunProgram>
