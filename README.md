@@ -9,10 +9,9 @@
 - [Installation](#installation)
 - [Features](#features)
 - [Usage](#usage)
-- [FAQ](#faq)
 - [Build](#build)
+- [FAQ](#faq)
 - [Team](#team)
-- [Support](#support)
 - [Donations](#donations)
 - [License](#license)
 
@@ -40,6 +39,14 @@
 
 > To change standard application key combination, press on the tray icon and choose Settings.
 
+## Build
+Project is compiled successfully with `MSVC2017 x64` on Windows and `Apple Clang x86_64` on macOS.
+
+1. Install [qpm](qpm.io) package manager.
+2. Run `qpm install` in src folder to install all dependencies.
+3. Open `VisualTranslator.pro` in QtCreator.
+3. Run `Build`.
+
 ## FAQ
 ### How it recognizes selected text?
 Under the hood VisualTranslator uses [tesseract](https://github.com/tesseract-ocr/tesseract) to recognize text on the selected area.
@@ -50,19 +57,10 @@ The latest version of Tesseract OCR engine is based on LSTM neural networks. [Mo
 ### What languages are supported?
 List of all supported languages can be found [here](https://github.com/VisualTranslator/VisualTranslator/blob/master/supported_languages.md).
 
-## Build
-Project is compiled successfully with `MSVC2017 x64` on Windows and `Apple Clang x86_64` on macOS.
-
-1. Install [qpm](qpm.io) package manager.
-2. Run `qpm install` in src folder to install all dependencies.
-3. Open `VisualTranslator.pro` in QtCreator.
-3. Run `Build`.
-
 ## Team
 * Andriy Semenets (https://github.com/semanser)
 * Oleksandr Kushnir (https://github.com/kushnir95)
 
-## Support
 ## Donations
 ## License
 
