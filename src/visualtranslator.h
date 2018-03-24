@@ -8,7 +8,7 @@
 #include <screenarea.h>
 #include <translator.h>
 
-class VisualTranslator : public QWidget
+class VisualTranslator : public QObject
 {
     Q_OBJECT
 private:
@@ -19,7 +19,7 @@ private:
     Tray *trayForm;
 
 public:
-    explicit VisualTranslator(QWidget *parent = 0);
+    explicit VisualTranslator();
     bool willBeUpdated();
 
 public slots:

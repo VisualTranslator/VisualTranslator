@@ -1,7 +1,7 @@
 #include "visualtranslator.h"
 #include "app.h"
 
-VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
+VisualTranslator::VisualTranslator()
 {
     QString shortcut = App::theApp()->settings()->value("/Settings/Shortcut/Recognition", "Ctrl+Alt+Q").toString();
 
@@ -44,7 +44,7 @@ bool VisualTranslator::willBeUpdated()
         // updates found
         if (exitCode == 0) {
             QMessageBox::StandardButton reply;
-            reply = QMessageBox::question(this, "VisualTranslator Update", "An update for VisualTranslator is available. Do you wish to install it now?",
+            reply = QMessageBox::question(0, "VisualTranslator Update", "An update for VisualTranslator is available. Do you wish to install it now?",
                                           QMessageBox::Yes|QMessageBox::No);
 
             // return true only if user want to update the program
