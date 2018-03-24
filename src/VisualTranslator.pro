@@ -99,6 +99,10 @@ win32 {
     copyToDestdir($$files($$PWD/tessdata/*), "tessdata/")    # Run windeployqt to add all additional dependencies
 }
 
+mac {
+    QMAKE_INFO_PLIST = $$PWD/platform/macOS/MyInfo.plist
+}
+
 # Load qpm dependencies
 include(vendor/vendor.pri)
 
