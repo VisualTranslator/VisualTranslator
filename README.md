@@ -63,4 +63,5 @@ List of all supported languages can be found [here](https://github.com/VisualTra
 
 ## Donations
 ## License
+This software use [GPL v3](https://github.com/VisualTranslator/VisualTranslator/blob/master/LICENSE) license.
 
