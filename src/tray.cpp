@@ -13,7 +13,7 @@ Tray::Tray(QWidget *parent) :
     ui->shortcut->setText("or press " + shortcut);
 
     // Setup the tray icon
-    trayIcon = new QSystemTrayIcon(QIcon(":/resources/tray.png"));
+    trayIcon = new QSystemTrayIcon(QIcon(":/resources/logo_256_256.png"));
     trayIcon->setToolTip(QString("Visual Translator"));
     trayIcon->show();
 
