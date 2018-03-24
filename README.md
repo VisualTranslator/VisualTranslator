@@ -25,15 +25,15 @@
   [TODO] add screenshots of tray icons in different OS
   
 ## Features
-* Select & Translate in any software
-* Screen Recognition AI
-* More than 125 languages
-* Fast and Cross-platform
+* Select & Translate in any software.
+* Screen Recognition AI.
+* More than 125 languages.
+* Fast and Cross-platform.
 * Written in C++ and avaliable for Windows, macOS and Linux.
-* Free
+* Free.
 
 ## Usage
-* Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> on Windows or <kbd>CMD</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> on macOS (or activate VisualTranslator from tray icon)
+* Press <kbd>CTRL</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> on Windows or <kbd>CMD</kbd> + <kbd>ALT</kbd> + <kbd>Q</kbd> on macOS (or activate VisualTranslator from tray icon).
 * Select screen area and release mouse button.
 * Voila! Translation will appear near the tray icon.
 
