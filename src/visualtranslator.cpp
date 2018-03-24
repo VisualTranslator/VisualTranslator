@@ -10,7 +10,7 @@ VisualTranslator::VisualTranslator(QWidget *parent) : QWidget(parent)
     screenArea = new ScreenArea;
     recognizer = new Recognizer(this);
     translator = new Translator;
-    trayForm = new TrayForm;
+    trayForm = new Tray;
 
     // Setup connection between the modules in order of execution
     QObject::connect(hotkey, SIGNAL(activated()), screenArea, SLOT(show()));
