@@ -45,7 +45,7 @@ void ScreenArea::mouseReleaseEvent(QMouseEvent *ev)
         rect.setBottom(start.y());
     }
     cropped =  screenshot.copy(rect);
-    this->close();
+    this->hide();
     emit selected(cropped);
 }
 
@@ -73,6 +73,6 @@ void ScreenArea::keyPressEvent(QKeyEvent *ev)
 {
     if (ev->key() == Qt::Key_Escape)
     {
-        this->close();
+        this->hide();
     }
 }

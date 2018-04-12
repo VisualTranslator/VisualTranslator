@@ -31,7 +31,7 @@ void VisualTranslator::changeShortcut(QString shortcut)
     hotkey->disconnect();
 
     // create a new hotkey
-    hotkey = new QHotkey(QKeySequence(shortcut), true, this);
+    hotkey = new QHotkey(QKeySequence(shortcut), true, this);// it may cause memory lick
     QObject::connect(hotkey, SIGNAL(activated()), screenArea, SLOT(show()));
 }
 
