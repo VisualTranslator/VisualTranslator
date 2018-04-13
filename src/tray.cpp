@@ -67,8 +67,7 @@ Tray::Tray()
 
         langToMenu->addAction(actionTo);
         menuLangToGroup->addAction(actionTo);
-        QObject::connect(actionFrom, SIGNAL(triggered()), this, SLOT(chooseLanguageTo()));
-
+        QObject::connect(actionTo, SIGNAL(triggered()), this, SLOT(chooseLanguageTo()));
     }
 
     trayIcon->setContextMenu(menu);
@@ -84,7 +83,6 @@ void Tray::chooseLanguageFrom()
     QAction *action = qobject_cast<QAction*>(sender());
     App::theApp()->settings()->setValue("/Settings/Languages/from", action->data().toString());
 }
-
 
 void Tray::chooseLanguageTo()
 {
