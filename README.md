@@ -18,7 +18,7 @@
 ## Installation
   The installation process is absolutely similar for Windows, macOS, and Linux.
   
-  **Download installer and follow the instructions inside.** [vtranslator.com/download](vtranslator.com/download)
+  **Download installer and follow the instructions inside.**
  
   > If you want to download the specific build, visit [Github Releases page](https://github.com/VisualTranslator/VisualTranslator/releases)
 
